@@ -12,11 +12,29 @@ TIPO_ESPECIALIDAD = (
 
 
 class Medico(models.Model):
-    autor_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    nombre_medico = models.TextField()
+    nombre_medico = models.TextField(max_length=30)
     tipo_Especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
 
 
     def __str__(self):
         return self.nombre_medico
     
+
+TIPO_PREVISION = (
+    ('Fonasa', 'Fonasa'),
+    ('Isapre', 'Isapre'),
+    ('Ninguna', 'Ninguna'),
+)
+
+
+class CitaMedica(models.Model):
+    run = models.IntegerField(primary_key=True)
+    nombre_paciente = models.TextField()
+    tipo_prevision = models.CharField(max_length=50, choices=TIPO_PREVISION)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
+    fecha_cita =  models.DateField()
+    hora_cita = models.TimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre_paciente
