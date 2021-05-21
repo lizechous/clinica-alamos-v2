@@ -35,6 +35,8 @@ class CitaMedica(models.Model):
     especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
     fecha_cita =  models.DateField()
     hora_cita = models.TimeField(blank=True, null=True)
+    email = models.EmailField(max_length=70,blank=True, null= True, unique= True)
+    precio = models.IntegerField()
 
     def __str__(self):
         return self.nombre_paciente
