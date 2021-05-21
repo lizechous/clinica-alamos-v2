@@ -33,7 +33,7 @@ class CitaMedica(models.Model):
     tipo_prevision = models.CharField(max_length=50, choices=TIPO_PREVISION)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
-    fecha_cita =  models.DateField(blank=True, null=True)
+    fecha_cita =  models.DateField()
     hora_cita = models.TimeField(blank=True, null=True)
 
     def __str__(self):
