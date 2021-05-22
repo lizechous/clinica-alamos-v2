@@ -52,7 +52,10 @@
                 <div id="menu">
                     <nav >
                         <ul>
-                            {% comment %}
+                            <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
+                            <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                            <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
+                            <!-- {% comment %} -->
                               <!-- <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
                                 <li class="nav-item"><a href="{% url 'lista_bicicleta' %}">Listar bicicletas</a></li>
                                 <li class="nav-item"><a href="{% url 'mantenedor' %}">Buscar</a></li>
@@ -65,7 +68,7 @@
                                 {% if user.is_authenticated %} 
                                 
                                 {% if user.is_superuser %}   -->
-                                <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
+                                <!-- <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li> -->
                                 <!-- <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Agregar usuario</a></li>
                                 <li class="nav-item"><a href="{% url 'listar_usuario' %}">Listar usuarios</a></li>
                                 <li class="nav-item"><a href="{% url 'funcionario_form' %}">Agregar funcionario</a></li>
@@ -78,7 +81,7 @@
                                 
                             <li class="nav-item"><a href="{% url 'quienes_somos' %}">Quienes somos</a></li>
                             <li class="nav-item"><a href="{% url 'galeria' %}">Galeria</a></li> -->
-                         {% endcomment %}
+                         <!-- {% endcomment %} -->
                             
                         </ul>
                     </nav>
