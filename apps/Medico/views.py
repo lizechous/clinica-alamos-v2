@@ -25,3 +25,12 @@ class Agregar_cita(CreateView):
 class Lista_citas(ListView):
     model = CitaMedica
     template_name = 'HoraMedica/lista_citas.html'
+    
+
+# MODIFICAR CITA 
+class Modificar_cita(UpdateView):
+    model = CitaMedica
+    form_class = CitaMedicaForm
+    template_name = 'HoraMedica/hora_form.html'
+    # success_url = reverse_lazy('agregar_cita')   
+    success_url = reverse_lazy('lista_citas') 

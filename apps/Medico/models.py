@@ -29,7 +29,8 @@ TIPO_PREVISION = (
 
 
 class CitaMedica(models.Model):
-    run = models.IntegerField(primary_key=True)
+    # run = models.IntegerField()
+    run = models.TextField()
     nombre_paciente = models.TextField()
     tipo_prevision = models.CharField(max_length=50, choices=TIPO_PREVISION)
     # medico = models.ForeignKey(Medico, on_delete=models.CASCADE)

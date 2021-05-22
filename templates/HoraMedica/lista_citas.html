@@ -11,6 +11,8 @@
 
         <thead>
             <tr>
+                <th>Id</th>
+                <th>Nombre medico</th>
                 <th>Run</th>
                 <th>Nombre Paciente</th>
                 <th>Fecha cita</th>
@@ -23,12 +25,18 @@
         <tbody>
             {% for citamedica in object_list %}
             <tr>
-                <th scope="row">{{ citamedica.run }} </th>
+                <th scope="row">{{ citamedica.id }} </th>
+                <td>{{ citamedica.nombre_medico}}</td>
+                <td>{{ citamedica.run}}</td>
                 <td>{{ citamedica.nombre_paciente}}</td>
                 <td>${{ citamedica.fecha_cita }}</td>
                 <td>${{ citamedica.hora_cita }}</td>
                 <td>${{ citamedica.precio }}</td>
 
+                
+                <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.id %}">Editar</a></td>
+
+                
                 <!-- {% comment %} {% if user.is_superuser %}
                 <td><a class="btn btn-primary" href="{% url 'editar_bicicleta' bicicleta.id %}">Editar</a></td>
                 <td><a class="btn btn-danger" href="{% url 'eliminar_bicicleta' bicicleta.id %}">Eliminar</a></td>
