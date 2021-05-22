@@ -34,8 +34,8 @@ class CitaMedica(models.Model):
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
     fecha_cita =  models.DateField()
-    hora_cita = models.TimeField(blank=True)
-    email = models.EmailField(max_length=70,blank=True)
+    hora_cita = models.TimeField(blank=True, null=True)
+    email = models.EmailField(max_length=70,blank=True, null= True, unique= True)
     precio = models.IntegerField()
 
     def __str__(self):
