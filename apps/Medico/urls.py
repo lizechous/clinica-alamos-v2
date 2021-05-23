@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita
+from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita, Eliminar_cita
 
 urlpatterns = [
 
@@ -15,5 +15,7 @@ urlpatterns = [
     # Modificar cita 
     path('horaMedica/editar_cita/<int:pk>', views.Modificar_cita.as_view(), name='editar_cita'),
 
+    # Eliminar cita
+    path('horaMedica/eliminar_cita/<int:pk>', views.Eliminar_cita.as_view(), name='eliminar_cita'),
 ]
 

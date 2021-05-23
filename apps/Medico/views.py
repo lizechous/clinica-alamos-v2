@@ -34,3 +34,9 @@ class Modificar_cita(UpdateView):
     template_name = 'HoraMedica/hora_form.html'
     # success_url = reverse_lazy('agregar_cita')   
     success_url = reverse_lazy('lista_citas') 
+
+# ELIMINAR CITA 
+class Eliminar_cita(DeleteView):
+    model = CitaMedica
+    template_name = 'HoraMedica/eliminar_cita.html'
+    success_url = reverse_lazy('lista_citas')
