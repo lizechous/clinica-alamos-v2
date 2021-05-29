@@ -29,12 +29,10 @@ TIPO_PREVISION = (
 
 
 class CitaMedica(models.Model):
-    # run = models.IntegerField()
-    run = models.TextField()
+    run= models.IntegerField(primary_key=True)
     nombre_paciente = models.TextField()
     tipo_prevision = models.CharField(max_length=50, choices=TIPO_PREVISION)
-    # medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    nombre_medico = models.TextField()
+    nombre_medico = models.ForeignKey(Medico, null=True, blank=True, on_delete=models.CASCADE)
     especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
     fecha_cita =  models.DateField()
     hora_cita = models.TimeField(blank=True, null=True)
