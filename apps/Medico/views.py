@@ -18,6 +18,25 @@ class Agregar_cita(CreateView):
 
 
 # LISTADO DE CITAS AGENDADAS
-def listar_citas(request):
-    citas = CitaMedica.objects.all()
-    return render(request, "HoraMedica/listar_citas.html", {'citas': citas})
+# def listar_citas(request):
+#     citas = CitaMedica.objects.all()
+#     return render(request, "Medico/listar_citas.html", {'citas': citas})
+
+class Lista_citas(ListView):
+    model = CitaMedica
+    template_name = 'HoraMedica/lista_citas.html'
+    
+
+# MODIFICAR CITA 
+class Modificar_cita(UpdateView):
+    model = CitaMedica
+    form_class = CitaMedicaForm
+    template_name = 'HoraMedica/hora_form.html'
+    # success_url = reverse_lazy('agregar_cita')   
+    success_url = reverse_lazy('lista_citas') 
+
+# ELIMINAR CITA 
+class Eliminar_cita(DeleteView):
+    model = CitaMedica
+    template_name = 'HoraMedica/eliminar_cita.html'
+    success_url = reverse_lazy('lista_citas')
