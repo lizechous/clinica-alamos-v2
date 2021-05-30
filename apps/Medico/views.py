@@ -20,4 +20,4 @@ class Agregar_cita(CreateView):
 # LISTADO DE CITAS AGENDADAS
 def listar_citas(request):
     citas = CitaMedica.objects.all()
-    return render(request, "Medico/listar_citas.html", {'citas': citas})
+    return render(request, "HoraMedica/listar_citas.html", {'citas': citas})
