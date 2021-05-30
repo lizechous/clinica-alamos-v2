@@ -42,5 +42,7 @@ class CitaMedica(models.Model):
     def __str__(self):
         return self.nombre_paciente
 
+
+
 # , null=True -- hora
 # , null= True, unique= True -- email
