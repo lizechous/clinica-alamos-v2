@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.conf.urls import url
 from . import views
 from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita, Eliminar_cita
 
@@ -17,4 +18,6 @@ urlpatterns = [
 
     # Eliminar cita
     path('horaMedica/eliminar_cita/<int:pk>', views.Eliminar_cita.as_view(), name='eliminar_cita'),
+
+    url('especialidad/get_especialidades/$', views.get_especialidades, name='get_especialidades'),
 ]

@@ -1,20 +1,16 @@
 from django.db import models
 
 # Create your models here.
-TIPO_ESPECIALIDAD = (
-    ('Cirugía', 'Cirugía'),
-    ('Cardiología', 'Cardiología'),
-    ('Odontología', 'Odontología'),
-    ('Pediatría', 'Pediatría'),
-    ('Ginecología', 'Ginecología'),
-    ('Oftomología', 'Oftomología'),
-)
+class Especialidad(models.Model):
+    nombre_especialidad = models.TextField()
+    valor = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre_especialidad
 
 class Medico(models.Model):
     nombre_medico = models.TextField()
-    # nombre_medico = models.TextField(max_length=30)
-    tipo_Especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
+    especialidad = models.ForeignKey(Especialidad, null=True, blank=True, on_delete=models.CASCADE)
 
 
     def __str__(self):
@@ -33,16 +29,13 @@ class CitaMedica(models.Model):
     nombre_paciente = models.TextField()
     tipo_prevision = models.CharField(max_length=50, choices=TIPO_PREVISION)
     nombre_medico = models.ForeignKey(Medico, null=True, blank=True, on_delete=models.CASCADE)
-    especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
     fecha_cita =  models.DateField()
     hora_cita = models.TimeField(blank=True, null=True)
     email = models.EmailField(max_length=70,blank=True, null= True, unique= True)
-    precio = models.IntegerField()
+    especialidad = models.ForeignKey(Especialidad, related_name='especialidad', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre_paciente
 
 
 
-# , null=True -- hora
-# , null= True, unique= True -- email

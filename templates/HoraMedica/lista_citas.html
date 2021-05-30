@@ -1,9 +1,62 @@
 {% extends 'base.html' %} 
+{% load static %}
 
+{% block main%}
+<nav class="navbar navbar-default">
+      <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                  </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                        <li class="active">
+                              <a href="index.html">Inicio</a>
+                        </li>
+                        <li>
+                              <a href="about.html">Listado de citas</a>
+                        </li>
+                        <li>
+                              <a href="about.html">Perfil</a>
+                        </li>
+                        <li>
+                              <a href="about.html">Salir</a>
+                        </li>
+                  </ul>
+            </div>
+      </div>
+</nav>
+<!--End Main Header -->
+
+<!--Page Title-->
+<section class="page-title text-center" style="background-image:url( {% static 'images/background/3.jpg' %});">
+    <div class="container">
+        <div class="title-text">
+            <h1>Listado de citas</h1>
+            <ul class="title-menu clearfix">
+                <li>
+                    <a href="index.html">Inicio &nbsp;/</a>
+                </li>
+                <li>Listado de citas</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+{% endblock %}
 
 {% block content %}
 <div class="container mt-3 pb-3">
     <div class="col-md-12">
+    <br>
+    <br>
 <h2> Listado de Citas </h2> 
    <!-- {% comment %} {% if object_list %} {% endcomment %} -->
     <hr>
@@ -11,26 +64,26 @@
 
         <thead>
             <tr>
-                <th>Nombre medico</th>
-                <th>Run</th>
                 <th>Nombre Paciente</th>
+                <th>Run</th>
+                <th>Nombre Médico</th>
                 <th>Fecha cita</th>
                 <th>Hora cita</th>
+                <th>Especialidad</th>
                 <th>Valor consulta</th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for citamedica in object_list %}
             <tr>
-                <th scope="row">{{ citamedica.run }} </th>
-                
                 <td>{{ citamedica.nombre_paciente}}</td>
+                <td>{{ citamedica.run}}</td>
                 <td>{{ citamedica.nombre_medico}}</td>
-                <td>${{ citamedica.fecha_cita }}</td>
-                <td>${{ citamedica.hora_cita }}</td>
-                <td>${{ citamedica.precio }}</td>
+                <td>{{ citamedica.fecha_cita }}</td>
+                <td>{{ citamedica.hora_cita }}</td>
+                <td>{{ citamedica.especialidad.nombre_especialidad }}</td>
+                <td>{{ citamedica.especialidad.valor}}</td>
+
 
                 
                 <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>

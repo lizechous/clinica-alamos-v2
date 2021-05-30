@@ -1,11 +1,12 @@
 # from apps.Medico.models import CitaMedica
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import CitaMedica
+from .models import CitaMedica, Medico
 from .forms import CitaMedicaForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
+from django.http import JsonResponse
+from django.core import serializers
 
 # Create your views here.
 
@@ -40,3 +41,8 @@ class Eliminar_cita(DeleteView):
     model = CitaMedica
     template_name = 'HoraMedica/eliminar_cita.html'
     success_url = reverse_lazy('lista_citas')
+
+def get_especialidades(request):
+    id_especialidad = request.GET.get('id_especialidad', None)
+    medicos = Medico.objects.raw('SELECT * FROM Medico_medico where especialidad_id='+id_especialidad)
+    return JsonResponse(serializers.serialize('json', medicos), safe = False)
