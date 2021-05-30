@@ -1,142 +1,275 @@
-<!-- {% load static %}  -->
 {% load static %} 
 
 <!DOCTYPE html>
 <html lang="en">
     
     
-
 <head>
     <meta charset="UTF-8">
-
-   
-    {% block css %} {% endblock css %}
-        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <meta name="description" content="Aesthetic Template">
+    <meta name="keywords" content="Aesthetic, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% block title %}<title>Clínica Dos Álamos </title>{% endblock title %}
+
+{% block css %} 
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="{%static 'plugins/slick/slick.css' %}">
+    <link rel="stylesheet" href="{%static 'plugins/slick/slick-theme.css' %}">
+    <!-- FancyBox -->
+    <link rel="stylesheet" href="{%static 'plugins/fancybox/jquery.fancybox.min.css' %}">
     
+    <!-- Stylesheets -->
+    <link href="{%static 'css/style.css' %}" rel="stylesheet">
+    
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{%static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{%static 'images/favicon.ico' %}" type="image/x-icon">
+{% endblock css %} 
 </head>
-<body>
 
-    
-    <div class="contenedor" >
-    <!-- CABECERA -->
-    
-<header id= "cabecera" style="background-color: rgb(102, 133, 201);">
-    <div class="container mt-3 pb-3">
-        <div class="col-md-8">
-            <!-- IMAGEN DESCARGA APP  -->
-             <div id="descargaapp">
-                <img src="{% static 'images/img/descargaapp.png' %}" alt="izquierda" width="120" height="60">
-            </div> 
+{% block header %}
+
+<!--header top-->
+<div class="header-top">
+      <div class="container clearfix">
+            <div class="top-left">
+                  <h6>Horario de atención : Lunes a Sábado - 8am a 10pm</h6>
+            </div>
+            <div class="top-right">
+                  <ul class="social-links">
+                        <li>
+                              <a href="#">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                              </a>
+                        </li>
+                        <li>
+                              <a href="#">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                              </a>
+                        </li>
+                        <li>
+                              <a href="#">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                              </a>
+                        </li>
+                        <li>
+                              <a href="#">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                              </a>
+                        </li>
+                        <li>
+                              <a href="#">
+                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                              </a>
+                        </li>
+                  </ul>
+            </div>
+      </div>
+</div>
+<!--header top-->
+
+<!--Header Upper-->
+<section class="header-uper">
+      <div class="container clearfix">
+            <div class="logo">
+                  <figure>
+                        <a href="index.html">
+                              <img src="{% static 'images/logo.png' %}" alt="" width="130">
+                        </a>
+                  </figure>
+            </div>
+            <div class="right-side">
+                  <ul class="contact-info">
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-envelope-o"></i>
+                              </div>
+                              <strong>Email</strong>
+                              <br>
+                              <a href="#">
+                                    <span>cm_dosalamos@gmail.com</span>
+                              </a>
+                        </li>
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-phone"></i>
+                              </div>
+                              <strong>Llamanos</strong>
+                              <br>
+                              <span>(88017) +833 678 122</span>
+                        </li>
+                  </ul>
+                  <div class="link-btn">
+                        <a href="#" class="btn-style-one">Agendar hora</a>
+                  </div>
+            </div>
+      </div>
+</section>
+<!--Header Upper-->
+
+
+<!--Main Header-->
+<nav class="navbar navbar-default">
+      <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                  </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                        <li class="active">
+                              <a href="index.html">Inicio</a>
+                        </li>
+                        <li>
+                              <a href="about.html">Nosotros</a>
+                        </li>
+                        <li>
+                              <a href="service.html">Servicios</a>
+                        </li>
+                        <li>
+                              <a href="appointment.html">Agendar hora</a>
+                        </li>
+                        <li>
+                              <a href="contact.html">Contacto</a>
+                        </li>
+                  </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+</nav>
+<!--End Main Header -->
+
+<!--Page Title-->
+<section class="page-title text-center" style="background-image:url({% static 'images/background/3.jpg' %});">
+    <div class="container">
+        <div class="title-text">
+            <h1>Agendar hora</h1>
+            <ul class="title-menu clearfix">
+                <li>
+                    <a href="index.html">Inicio &nbsp;/</a>
+                </li>
+                <li>Agendar hora</li>
+            </ul>
         </div>
     </div>
+</section>
+<!--End Page Title-->
 
+{% endblock %}
 
-    <div class="container mt-3 pb-3">
-        <div class="col-md-12">
-            <!-- IMAGEN LOGO  -->
-            <div id="logo">
-                <img src="{% static 'images/img/medicina2.jpg' %}" alt="centrado" width="500" height="130" >
-            </div> 
+{% block content %} {% endblock %}
 
+{% block footer %} 
+<footer class="footer-main">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="about-widget">
+            <div class="footer-logo">
+              <figure>
+                <a href="index.html">
+                  <img src="{% static 'images/logo-2.png' %}" alt="">
+                </a>
+              </figure>
+            </div>
+            <p>Centro médico dos Álamos</p>
+            <ul class="location-link">
+              <li class="item">
+                <i class="fa fa-map-marker"></i>
+                <p>Santiago centro, Chile</p>
+              </li>
+              <li class="item">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <a href="#">
+                  <p>cm.dosalamos</p>
+                </a>
+              </li>
+              <li class="item">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <p>833 678 122</p>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
-
-
-            <nav id="navbar" style="background-color: rgb(66, 90, 143);">   
-
-                <div id="menu">
-                    <nav >
-                        <ul>
-                                <!-- {% comment %} <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
-                                <li class="nav-item"><a href="{% url 'lista_bicicleta' %}">Listar bicicletas</a></li>
-                                <li class="nav-item"><a href="{% url 'mantenedor' %}">Buscar</a></li>
-                      
-                                {% if not user.is_authenticated %} 
-                                <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Registrarse</a></li>
-                                <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
-                                {% endif %}
-                                
-                                {% if user.is_authenticated %} 
-                                
-                                {% if user.is_superuser %} 
-                                <li class="nav-item"><a href="{% url 'agregar_bicicleta' %}">Agregar bicicleta</a></li>
-                                <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Agregar usuario</a></li>
-                                <li class="nav-item"><a href="{% url 'listar_usuario' %}">Listar usuarios</a></li>
-                                <li class="nav-item"><a href="{% url 'funcionario_form' %}">Agregar funcionario</a></li>
-                                <li class="nav-item"><a href="{% url 'lista_funcionario' %}">Listar funcionarios</a></li>
-                                {% endif %} 
-                
-                                <li class="nav-item"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
-                                <span class="ml-md-5" style="color: rgb(81, 174, 214);"><strong>Usuario: {{ user.get_username }}</strong></span>
-                                {% endif %}                
-                                
-                            <li class="nav-item"><a href="{% url 'quienes_somos' %}">Quienes somos</a></li>
-                            <li class="nav-item"><a href="{% url 'galeria' %}">Galeria</a></li>
-                         {% endcomment %} -->
-                            
-                        </ul>
-                    </nav>
-
-                </div>
-
-            </nav>
-            <div id="cuerpo" > 
-                <div class="caja1">
-
-                </div>
-            </div>
-        
-        </header>
-
-    
-
-        <div id= "principal" style="background-color: rgb(143, 174, 221);" >
-            
-        {% block title %}{% endblock title %}
-
-         {% block content %}   {% endblock %} 
-
-
-       </div>
-
-        <footer id="pie" style="background-color: rgb(66, 90, 143);" >
-    <div class="container mt-3 pb-3">
-        <div class="col-md-12">   
-            <br>
-            <div id="img_footer">
-                <img src="{% static 'images/img/footer.jpg' %}" alt="" width="100" height="100" >
-            </div>
-
-            <div id="text1">
-                <font color="silver"> <p> 2018 Mobike</p> </font>
-            </div>
-
-            <div id="text2">
-                <font color="silver"> <p>Todos los derechos reservados</p> </font>
-            </div>
-            
-            <div id="text3">
-                <ul>
-                    <li> <a href="https://clinica_alamos.com/cl/" target="_blank" > support.cl@clinica-alamos.com </a> </li>
-                    
-                </ul>
-            <br>
-            </div>
-            
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <h6>Servicios</h6>
+          <ul class="menu-link">
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Kinesiología</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Clínica Dental</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Cardiología</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Psicología</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Ginecologíac</a>
+            </li>
+          </ul>
         </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="social-links">
+          </div>
+        </div>
+      </div>
     </div>
-        </footer>
+  </div>
+  <div class="footer-bottom">
+    <div class="container clearfix">
+      <div class="copyright-text">
+        <p>&copy; Copyright 2021. All Rights Reserved by
+          <a href="index.html">Clínica Dos Álamos</a>
+        </p>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </div>
+</footer>
+<!--End footer-main-->
+{% endblock %}
 
-     
-</body>
+{% block js %} 
+<div class="scroll-to-top scroll-to-target" data-target=".header-top">
+  <span class="icon fa fa-angle-up"></span>
+</div>
 
-</html> 
+<script src="{% static 'plugins/jquery.js' %}"></script>
+<script src="{% static 'plugins/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-select.min.js' %}"></script>
+<!-- Slick Slider -->
+<script src="{% static 'plugins/slick/slick.min.js' %}"></script>
+<!-- FancyBox -->
+<script src="{% static 'plugins/fancybox/jquery.fancybox.min.js' %}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<script src="{% static 'plugins/google-map/gmap.js' %}"></script>
+
+<script src="{% static 'plugins/validate.js' %}"></script>
+<script src="{% static 'plugins/wow.js' %}"></script>
+<script src="{% static 'plugins/jquery-ui.js' %}"></script>
+<script src="{% static 'plugins/timePicker.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

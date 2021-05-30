@@ -3,14 +3,14 @@
 {% block content %}
 <div class="container mt-3 pb-3">
     <div class="col-md-5">
-    <h2>Agregar Hora Medica</h2>
+    <h2>Agendar hora médica</h2>
     <hr>
     <div class="content container">
     <form method="POST">
         {% csrf_token %} 
         {{ form.as_p }}
         <br>
-        <button type="submit">Grabar</button>
+        <button type="submit">Guardar</button>
     </form>
     </div>
     <br>
