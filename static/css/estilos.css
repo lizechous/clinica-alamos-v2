@@ -1,0 +1,734 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* TODO LO QUE HAYA DENTRO DE LA CLASE CONTENEDOR */
+.contenedor > *{
+    padding: 10px;
+    flex: 1 100%;
+    
+}
+
+.contenedor{
+    display: flex;
+     flex-direction: row;  
+     flex-wrap: wrap;  
+     /* flex-flow:  row wrap;   */
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    /* font-size: 80%;   */
+    
+}
+
+
+#cabecera{
+    justify-content: flex-start;
+    align-items: center;
+     /* width: 100%;    */
+     /* width: 100em;  */
+    flex-direction: row;
+}
+
+
+header{
+    background: rgb(146, 184, 241);
+    align-items: flex-start;
+    /* height: 210px;   */
+    
+    flex-direction: row;
+
+}
+#RegistroInicio li{
+    float: right;
+    display: inline;
+    margin: 10px;
+    padding-bottom: 15px;
+}
+
+#logo {
+      text-align: center;   
+    display: block;
+    margin:auto;  
+
+    
+}
+
+#descargaapp{
+     
+    float: left;
+    
+}
+
+/* #logo img{
+    justify-content: flex-start;
+}
+display:block;
+    margin:auto;
+#ios{
+
+}*/
+#titulo1{
+    text-align: center;
+    color: rgb(151, 148, 148);
+    /* text */
+}
+
+#titulo1{
+    justify-content: center;
+    align-items: center;
+
+}
+
+#menu{
+    justify-content: flex-start;
+    text-align: right; 
+    
+    
+}
+
+#menu nav li{
+    display: inline;
+    margin: 10px;
+    padding-bottom: 15px;
+    
+}
+#menu nav li a{
+    text-decoration: none;
+    color: rgb(224, 220, 220);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+nav{
+    background-color: rgb(66, 90, 143);
+    height: 40px;
+}
+
+nav ul li:hover{
+    background-color: rgb(141, 157, 192);
+    transition: 0.9s; 
+}
+
+#principal{
+    /* display: flex; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: flex-start;
+    /* width: 100%; */
+    height: 1500px; /*--> ancho del cuerpo*/
+    /* border : 5px solid mediumvioletred; */
+    background-color: rgb(146, 184, 241); 
+  
+}
+
+.titulo{
+    color: rgb(107, 105, 105);
+}
+
+#pie{
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 200%;
+    
+} 
+
+footer{
+    background: rgb(66, 90, 143);
+    align-items: flex-start;
+    height: 200px;
+    padding: 15px;
+}
+
+
+#text1{
+    text-align: center;
+    color: rgb(190, 185, 185);
+}
+
+#text2{
+    text-align: center;
+    color: rgb(190, 185, 185);
+}
+
+#text3{
+    justify-content: flex-start;
+    text-align: center; 
+}
+
+ #text3 li{
+    display: inline;
+     margin: 5px;  
+    text-align: center;
+}   
+
+ #text3 li a{
+    text-align: center;
+    color: rgb(190, 185, 185);
+    text-decoration: none;
+} 
+
+#img_footer img{
+
+        display:block;
+        margin:auto;
+   
+}
+
+
+/* -------------------------INICIO DE MEDIAQUERYS---------------------------------------------------------- */
+/* SE DEFINE TAMAÑO DE LETRA ADAPTABLE AL TAMAÑO DE PANTALLA */
+html {
+    font-size: 14px;
+  }
+  
+  @media (max-width: 1280px) {
+    html { font-size: 14px; }
+  }
+  
+   @media (max-width: 800px) {
+    html { font-size: 11px; }
+  }
+
+  @media (max-width: 600px) {
+    html { font-size: 8px; }
+  }
+
+
+
+  /* SE DEFINE RESPONSIVIDAD PARA LOS ELEMENTOS DEL PRINCIPAL */
+
+  @media screen and (max-width: 530px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .post{
+        width: 95%;
+        height: 230px;
+        
+    }
+    .post img{
+        width: 25%;
+        height: 25%;
+        /* display: none; */
+    } 
+    .opiniones{
+        width: 95%;
+        height: 380px;
+    }
+    
+    
+}
+ @media screen and (min-width:531px) and (max-width: 840px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .post{
+        width: 38%;
+        height: 325px;
+        
+    }
+    
+    .post img{
+        width: 33%;
+        height: 33%;
+        /* display: none; */
+    } 
+    .opiniones{
+        width: 77%;
+        height: 610px;
+    }
+    
+    
+} 
+@media screen and (min-width:841px) and (max-width: 987px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .post{
+        width: 28%;
+        height: 380px;
+        
+    }
+    .post4{
+        float: left;
+        width: 84%;
+        height: 260px;
+    }
+    .post img{
+        width: 33%;
+        height: 33%;
+        /* display: none; */
+    } 
+    .post4 img{
+        width: 15%;
+        height: 15%;
+    }
+    .opiniones{
+        width: 84%;
+        height: 575px;
+    }
+    
+    
+}
+@media screen and (min-width:987px) and (max-width: 1542px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .post{
+        width: 21%;
+        height: 450px;
+    }
+    .post img{
+        width: 33%;
+        height: 33%;
+        /* display: none; */
+    } 
+    
+    .opiniones{
+        width: 90%;
+        height: 580px;
+    }
+    
+    
+    
+}
+
+/* SE DEFINE MENU RESPONSIVO */
+@media only screen and (max-width: 599px){
+    nav{
+        height: 152px;
+    }
+
+    #menu{
+        text-align: center;
+         width: 100%; 
+    }
+    
+    #menu a{
+        display: block;
+         border-bottom: 1px solid darkgreen; 
+        margin: 0;
+    }
+    
+}
+
+/* ---------------------------------------------------------------------------------------------------------- */
+
+/* ----PESTAÑA: GALERIA ------*/
+article{
+    width: 20em;
+    height: 20em;
+}
+
+.imagen{
+    color: rgb(107, 105, 105);
+    /* width: 18%;      */
+    /* width: 20em;  */
+     /* height: 30%;    */
+    float: left ;
+    background: white;
+    border: 5px solid rgb(132, 202, 132);
+    /* padding: 3%; */
+    margin: 2%;
+    margin-right: 0%;
+    /* font-size: 1em; */
+}
+
+ .imagen img{
+    max-width: 100%;
+    
+    height: auto;  
+    padding: 0%; 
+    /* width:200px; 
+    height:200px;  */
+    /* align: right */
+}
+
+/* --------------RESOLUCIONES--------------------- */
+ @media screen and (max-width: 530px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 35%;
+        height: 178px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+
+ } 
+ @media screen and (min-width:531px) and (max-width: 563px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+
+    .imagen{
+        width: 25%;
+        height: 135px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+    
+} 
+@media screen and (min-width:564px) and (max-width: 610px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 30%;
+        height: 160px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+    
+}
+
+@media screen and (min-width:610px) and (max-width: 700px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 30%;
+        height: 180px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+}
+
+@media screen and (min-width:701px) and (max-width: 766px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 30%;
+        height: 220px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+}
+
+@media screen and (min-width:767px) and (max-width: 980px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 25%;
+        height: 210px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+}
+
+
+@media screen and (min-width:980px) and (max-width: 1250px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 18%;
+        height: 210px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+}
+
+@media screen and (min-width:1250px) and (max-width: 1542px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .imagen{
+        width: 18%;
+        height: 250px;
+        
+    }
+    .imagen img{
+        width: 100%;
+        height: 100%;
+        /* display: none; */
+    } 
+    
+    
+    
+    
+}
+
+/* ---------PESTAÑA QUIENES SOMOS------------------ */
+.informacion{
+    color: rgb(107, 105, 105);
+    width: 90%; 
+     height: 500px; 
+    float: left;
+    background: white;
+    border: 5px solid rgb(132, 202, 132);
+    padding: 3%;
+    margin: 2%;
+    font-size: 1em;
+}
+
+/* RESOLUCIONES QUIENES SOMOS  */
+@media screen and (max-width: 530px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .informacion{
+        width: 95%;
+        height: 300px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+}
+ @media screen and (min-width:531px) and (max-width: 599px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .informacion{
+        width: 95%;
+        height: 300px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+    
+} 
+@media screen and (min-width:600px) and (max-width: 796px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .informacion{
+        width: 95%;
+        height: 340px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+    
+}
+@media screen and (min-width:797px) and (max-width: 1028px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .informacion{
+        width: 95%;
+        height: 450px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+}
+
+@media screen and (min-width:1028px) and (max-width: 1542px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .informacion{
+        width: 95%;
+        height: 400px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+}
+
+/*--------------------- SOLICITUD BICICLETA---------------------------------------------------------------- */
+.formulario{
+    color: rgb(107, 105, 105);
+    width: 86%; 
+     height: 900px; 
+    float: left;
+    background: white;
+    border: 5px solid rgb(132, 202, 132);
+    padding: 3%;
+    margin: 2%;
+    font-size: 1em;
+}
+
+.boton{
+    width: 15%;
+    background-color: lightgreen;
+    border: 5px solid rgb(132, 202, 132);
+}
+
+/* RESOLUCIONES SOLICITAR BICICLETA  */
+@media screen and (max-width: 599px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .formulario{
+        width: 95%;
+        height: 460px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+}
+ @media screen and (min-width:601px) and (max-width: 800px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .formulario{
+        width: 95%;
+        height: 600px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+    
+} 
+@media screen and (min-width:801px) and (max-width: 1542px){
+    
+    header img{
+        max-width: 50%;
+        height: auto;
+
+    }
+    .formulario{
+        width: 95%;
+        height: 800px;
+        
+    }
+    
+    footer img{
+        max-width: 15%;
+        height: auto;
+
+    }
+    
+    
+}
