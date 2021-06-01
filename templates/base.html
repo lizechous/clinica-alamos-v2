@@ -27,7 +27,7 @@
 
 {%endblock%}
 
-{% block headernav %}
+
 <!--header top-->
 <div class="header-top">
       <div class="container clearfix">
@@ -96,15 +96,86 @@
             </div>
       </div>
 </section>
-<!--Header Upper-->
-{% endblock %}
+
+<!-- AQUI ESTÁ EL NAV CON LOS BOTONES PARA ACCEDER A CUALQUIERA DE LOS TEMPLATES FUNCIONALES -->
+<!-- {% comment %} <header id= "cabecera">
+
+          <nav id="navbar" style="background-color: rgb(18, 40, 88);">   
+
+              <div id="menu" >
+                  <nav >
+                      <ul>
+                          <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
+                          <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                          <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
+                         {% comment %} 
+                             <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                              <li class="nav-item"><a href="{% url 'lista_bicicleta' %}">Listar bicicletas</a></li>
+                              <li class="nav-item"><a href="{% url 'mantenedor' %}">Buscar</a></li>
+                    
+                              {% if not user.is_authenticated %} 
+                              <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Registrarse</a></li>
+                              <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                              {% endif %}
+                              
+                              {% if user.is_authenticated %} 
+                              
+                              {% if user.is_superuser %}   -->
+                              <!-- <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li> -->
+                              <!-- <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Agregar usuario</a></li>
+                              <li class="nav-item"><a href="{% url 'listar_usuario' %}">Listar usuarios</a></li>
+                              <li class="nav-item"><a href="{% url 'funcionario_form' %}">Agregar funcionario</a></li>
+                              <li class="nav-item"><a href="{% url 'lista_funcionario' %}">Listar funcionarios</a></li>
+                              {% endif %} 
+              
+                              <li class="nav-item"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                              <span class="ml-md-5" style="color: rgb(81, 174, 214);"><strong>Usuario: {{ user.get_username }}</strong></span>
+                              {% endif %}                
+                              
+                          <li class="nav-item"><a href="{% url 'quienes_somos' %}">Quienes somos</a></li>
+                          <li class="nav-item"><a href="{% url 'galeria' %}">Galeria</a></li> 
+                       
+                          
+                      </ul>
+                  </nav>
+
+              </div>
+
+          </nav>
+      
+      </header> {% endcomment %} -->
+
+      <nav class="navbar navbar-default">
+        <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                          <!-- REDIRECCIONA AL TEMPLLATE HOME -->
+                          <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                          <!-- REDIRECCIONA AL TEMPLATE AGREGAR CITA -->
+                          <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
+                          <!-- REDIRECCIONA AL TEMPLATE DEL LISTADO DE CITAS -->
+                          <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
+                          <!-- PAGOS -->
+                          <!-- buscar medicos  -->
+                          <li class="nav-item"><a href="{% url 'lista_medicos_pagos' %}">Listar Pagos</a></li>
+                          
+
+                    </ul>
+              </div>
+        </div>
+  </nav>
+  <!-- FINAL DEL NAV CON LOS TEMPLATES FUNCIONALES -->
+
 
 <!--Main Header-->
 {% block main%} {% endblock %}
 
 {% block content %} {% endblock %}
 
-{% block footer %} 
+
 <!--footer-main-->
 <footer class="footer-main">
   <div class="footer-top">
@@ -235,7 +306,7 @@
 
 </div>
 <!--End pagewrapper-->
-{% endblock %}
+
 
 
 <!--Scroll to top-->
