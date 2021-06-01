@@ -12,6 +12,7 @@ from django.core import serializers
 
 # CREAR CITA
 class Agregar_cita(CreateView): 
+    #CitaMedica.objects.create(name='test')
     model = CitaMedica 
     form_class = CitaMedicaForm
     template_name = 'HoraMedica/hora_form.html' 
@@ -44,5 +45,5 @@ class Eliminar_cita(DeleteView):
 
 def get_especialidades(request):
     id_especialidad = request.GET.get('id_especialidad', None)
-    medicos = Medico.objects.raw('SELECT * FROM Medico_medico where especialidad_id='+id_especialidad)
-    return JsonResponse(serializers.serialize('json', medicos), safe = False)
+    medicos = Medico.objects.filter(especialidad_id=id_especialidad)
+    return JsonResponse(serializers.serialize('json', list(medicos)), safe=False)

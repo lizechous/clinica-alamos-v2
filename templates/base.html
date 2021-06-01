@@ -265,22 +265,23 @@
         },
         dataType: 'json',
         success: function (data) {
-            var select = document.getElementById('id_nombre_medico');
-            select.options = [];
+            var select = document.getElementById('id_medico');
+            select.removeAttribute("disabled");
+            select.length = 0;
             var dataMedicos = jQuery.parseJSON(data)
             /* Remove all options from the select list */
-            $('id_nombre_medico').empty();
+            $('id_medico').empty();
             /* Insert the new ones from the array above */
             dataMedicos.forEach(function(value) {
               var opt = document.createElement('option');
               opt.innerHTML = value.fields.nombre_medico;
-              opt.value = value.fields.nombre_medico;
+              opt.value = value.pk;
               select.appendChild(opt);
             });
         }
       });
-
     });
+
   </script>
 {% endblock %}
 </body>

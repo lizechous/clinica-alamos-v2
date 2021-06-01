@@ -7,8 +7,9 @@ urlpatterns = [
 
 #------------ HORAS MEDICAS ---------------
     # Agregar cita medica
-     path('horaMedica/agregar_cita', views.Agregar_cita.as_view(), name="agregar_cita"),
-     
+    path('horaMedica/agregar_cita', views.Agregar_cita.as_view(), name="agregar_cita"),
+    #url('horaMedica/agregar_cita', views.get_especialidades, name='get_especialidades'),     
+
     # Listar las citas 
     # path('listarCitas', views.listar_citas, name="listar_citas"),
     path('horaMedica/lista_citas', views.Lista_citas.as_view(), name='lista_citas'),
@@ -20,4 +21,5 @@ urlpatterns = [
     path('horaMedica/eliminar_cita/<int:pk>', views.Eliminar_cita.as_view(), name='eliminar_cita'),
 
     url('especialidad/get_especialidades/$', views.get_especialidades, name='get_especialidades'),
+
 ]
