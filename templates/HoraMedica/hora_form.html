@@ -55,6 +55,61 @@
 <!--End Page Title-->
 {% endblock %}
 
+{% block javascript %}
+  <script>
+
+    $(function() {
+        $("#id_run").rut().on('rutValido', function(e, rut, dv) {
+        }, { minimumLength: 7,  maximumLength: 9} );
+    })
+
+    $( function() {
+        $('#id_hora_cita').timepicker({
+            'timeFormat': 'H:i',
+            'step': '45',
+            'minTime': '8:00',
+            'maxTime': '18:00',
+        } );
+    } );
+    
+    $( function() {
+        $( "#id_fecha_cita" ).datepicker(
+            {
+                'dateFormat': 'dd/mm/yy'
+            }
+        );
+    } );
+
+    $("#id_especialidad").change(function () {
+      var id_especialidad = $(this).val();
+
+      $.ajax({
+        url: '/especialidad/get_especialidades',
+        data: {
+          'id_especialidad': id_especialidad
+        },
+        dataType: 'json',
+        success: function (data) {
+            var select = document.getElementById('id_medico');
+            select.removeAttribute("disabled");
+            select.length = 0;
+            var dataMedicos = jQuery.parseJSON(data)
+            /* Remove all options from the select list */
+            $('id_medico').empty();
+            /* Insert the new ones from the array above */
+            dataMedicos.forEach(function(value) {
+              var opt = document.createElement('option');
+              opt.innerHTML = value.fields.nombre_medico;
+              opt.value = value.pk;
+              select.appendChild(opt);
+            });
+        }
+      });
+    });
+
+  </script>
+{% endblock %}
+
 {% block content %}
 <!-- Contact Section -->
 <section class="blog-section section style-three pb-0">

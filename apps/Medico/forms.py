@@ -23,7 +23,7 @@ class CitaMedicaForm(forms.ModelForm):
             'tipo_prevision': forms.Select(attrs={'class':'form-control'}),
             'especialidad': forms.Select(attrs={'class':'form-control'}),
             'medico': forms.Select(attrs={'class':'form-control', 'disabled' : 'disabled'}),
-            'fecha_cita' : forms.DateInput(format='%d/%m/%Y'),
-            'hora_cita' : forms.TextInput(attrs={'class': 'form-control'}),
+            'fecha_cita' : forms.TextInput(attrs={'class': 'form-control', 'readonly' : 'readonly'}),
+            'hora_cita' : forms.TextInput(attrs={'class': 'timepicker'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}), 
         }

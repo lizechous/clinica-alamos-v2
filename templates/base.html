@@ -20,6 +20,9 @@
   <!-- Stylesheets -->
   <link href="{% static 'css/style.css'  %}" rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 {%endblock%}
@@ -241,6 +244,7 @@
 </div>
 
 <script src="{% static 'plugins/jquery.js' %}"></script>
+<script src="{% static 'plugins/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-select.min.js'  %}"></script>
 <!-- Slick Slider -->
@@ -251,39 +255,14 @@
 <script src="{% static 'plugins/validate.js' %}"></script>
 <script src="{% static 'plugins/wow.js' %}"></script>
 <script src="{% static 'plugins/jquery-ui.js' %}"></script>
-<script src="{% static 'plugins/timePicker.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery.timepicker.css' %}" />
+  <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script>
+
 {% block javascript %}
-  <script>
-    $("#id_especialidad").change(function () {
-      var id_especialidad = $(this).val();
-
-      $.ajax({
-        url: '/especialidad/get_especialidades',
-        data: {
-          'id_especialidad': id_especialidad
-        },
-        dataType: 'json',
-        success: function (data) {
-            var select = document.getElementById('id_medico');
-            select.removeAttribute("disabled");
-            select.length = 0;
-            var dataMedicos = jQuery.parseJSON(data)
-            /* Remove all options from the select list */
-            $('id_medico').empty();
-            /* Insert the new ones from the array above */
-            dataMedicos.forEach(function(value) {
-              var opt = document.createElement('option');
-              opt.innerHTML = value.fields.nombre_medico;
-              opt.value = value.pk;
-              select.appendChild(opt);
-            });
-        }
-      });
-    });
-
-  </script>
 {% endblock %}
+
 </body>
 
 </html>
