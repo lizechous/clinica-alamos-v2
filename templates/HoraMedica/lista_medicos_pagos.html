@@ -9,12 +9,12 @@
 <section class="page-title text-center" style="background-image:url( {% static 'images/background/3.jpg' %});">
     <div class="container">
         <div class="title-text">
-            <h1>Listado de citas</h1>
+            <h1>Listado de Pagos</h1>
             <ul class="title-menu clearfix">
                 <li>
                     <a href="index.html">Inicio &nbsp;/</a>
                 </li>
-                <li>Listado de citas</li>
+                <li>Listado de Pagos</li>
             </ul>
         </div>
     </div>
@@ -27,37 +27,30 @@
     <div class="col-md-12">
     <br>
     <br>
-<h2> Listado de Citas </h2> 
+
    <!-- {% comment %} {% if object_list %} {% endcomment %} -->
     <hr>
     <table class="table table-hover">
 
         <thead>
             <tr>
-                <th>Nombre Paciente</th>
+                
                 <th>Run</th>
                 <th>Nombre Médico</th>
-                <th>Fecha cita</th>
-                <th>Hora cita</th>
                 <th>Especialidad</th>
                 <th>Valor consulta</th>
+                
             </tr>
         </thead>
         <tbody>
             {% for citamedica in object_list %}
             <tr>
-                <td>{{ citamedica.nombre_paciente}}</td>
-                <td>{{ citamedica.run}}</td>
-                <td>{{ citamedica.medico}}</td>
-                <td>{{ citamedica.fecha_cita }}</td>
-                <td>{{ citamedica.hora_cita }}</td>
-                <td>{{ citamedica.especialidad.nombre_especialidad }}</td>
+
+                <td>{{ citamedica.nombre_medico.run_medico}}</td>
+                <td>{{ citamedica.nombre_medico}}</td>
+                <td>{{ citamedica.especialidad}}</td>
                 <td>{{ citamedica.especialidad.valor}}</td>
 
-
-                
-                <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>
-                <td><a class="btn btn-danger" href="{% url 'eliminar_cita' citamedica.run %}">Eliminar</a></td>
                 
                 <!-- {% comment %} {% if user.is_superuser %}
                 <td><a class="btn btn-primary" href="{% url 'editar_bicicleta' bicicleta.id %}">Editar</a></td>

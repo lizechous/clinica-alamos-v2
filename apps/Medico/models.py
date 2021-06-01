@@ -9,6 +9,7 @@ class Especialidad(models.Model):
         return self.nombre_especialidad
 
 class Medico(models.Model):
+    run_medico = models.IntegerField(primary_key=True)
     nombre_medico = models.TextField()
     especialidad = models.ForeignKey(Especialidad, null=True, blank=True, on_delete=models.CASCADE)
 

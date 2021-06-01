@@ -102,12 +102,12 @@ display:block;
 }
 
 nav{
-    background-color: rgb(66, 90, 143);
+    background-color: rgb(26, 45, 85);
     height: 40px;
 }
 
 nav ul li:hover{
-    background-color: rgb(141, 157, 192);
+    background-color: rgb(119, 138, 180);
     transition: 0.9s; 
 }
 
