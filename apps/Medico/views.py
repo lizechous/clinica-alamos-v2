@@ -7,6 +7,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.core import serializers
+from django.db.models import Q 
 
 # Create your views here.
 
@@ -46,3 +47,10 @@ def get_especialidades(request):
     id_especialidad = request.GET.get('id_especialidad', None)
     medicos = Medico.objects.raw('SELECT * FROM Medico_medico where especialidad_id='+id_especialidad)
     return JsonResponse(serializers.serialize('json', medicos), safe = False)
+
+#----------------- PAGOS -------------------------------------------
+class Lista_medicos_pagos(ListView):
+    model = CitaMedica
+    template_name = 'HoraMedica/lista_medicos_pagos.html'
+
+

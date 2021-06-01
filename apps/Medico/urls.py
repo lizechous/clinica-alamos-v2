@@ -20,4 +20,10 @@ urlpatterns = [
     path('horaMedica/eliminar_cita/<int:pk>', views.Eliminar_cita.as_view(), name='eliminar_cita'),
 
     url('especialidad/get_especialidades/$', views.get_especialidades, name='get_especialidades'),
+    
+    # -----------PAGOS-------------------------
+    # trae los pagos de todos los medicos 
+    path('horaMedica/lista_pagos', views.Lista_medicos_pagos.as_view(), name='lista_medicos_pagos'),
+    
+    
 ]

@@ -1,0 +1,73 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block main%}
+
+<!--End Main Header -->
+
+<!--Page Title-->
+<section class="page-title text-center" style="background-image:url( {% static 'images/background/3.jpg' %});">
+    <div class="container">
+        <div class="title-text">
+            <h1>Listado de Pagos</h1>
+            <ul class="title-menu clearfix">
+                <li>
+                    <a href="index.html">Inicio &nbsp;/</a>
+                </li>
+                <li>Listado de Pagos</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3 pb-3">
+    <div class="col-md-12">
+    <br>
+    <br>
+
+   <!-- {% comment %} {% if object_list %} {% endcomment %} -->
+    <hr>
+    <table class="table table-hover">
+
+        <thead>
+            <tr>
+                
+                <th>Run</th>
+                <th>Nombre Médico</th>
+                <th>Especialidad</th>
+                <th>Valor consulta</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for citamedica in object_list %}
+            <tr>
+
+                <td>{{ citamedica.nombre_medico.run_medico}}</td>
+                <td>{{ citamedica.nombre_medico}}</td>
+                <td>{{ citamedica.especialidad}}</td>
+                <td>{{ citamedica.especialidad.valor}}</td>
+
+                
+                <!-- {% comment %} {% if user.is_superuser %}
+                <td><a class="btn btn-primary" href="{% url 'editar_bicicleta' bicicleta.id %}">Editar</a></td>
+                <td><a class="btn btn-danger" href="{% url 'eliminar_bicicleta' bicicleta.id %}">Eliminar</a></td>
+                {% endif %}   {% endcomment %} -->
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+<!-- {% comment %} {% else %}
+    <h1>No hay registros de bicicletas</h1>
+{% endif %}  {% endcomment %} -->
+
+</div>
+</div>
+{% endblock %}
+
+
