@@ -27,7 +27,6 @@
     <div class="col-md-12">
     <br>
     <br>
-
    <!-- {% comment %} {% if object_list %} {% endcomment %} -->
     <hr>
     <table class="table table-hover">
@@ -35,10 +34,12 @@
         <thead>
             <tr>
                 
-                <th>Run</th>
+                <th>Run Médico</th>
                 <th>Nombre Médico</th>
                 <th>Especialidad</th>
                 <th>Valor consulta</th>
+                <th>Comisión(40%)</th>
+                <th>Total liquidación</th>
                 
             </tr>
         </thead>
@@ -46,11 +47,12 @@
             {% for citamedica in object_list %}
             <tr>
 
-                <td>{{ citamedica.nombre_medico.run_medico}}</td>
-                <td>{{ citamedica.nombre_medico}}</td>
+                <td>{{ citamedica.medico.run_medico}}</td>
+                <td>{{ citamedica.medico.nombre_medico}}</td>
                 <td>{{ citamedica.especialidad}}</td>
-                <td>{{ citamedica.especialidad.valor}}</td>
-
+                <td class="precio">{{ citamedica.especialidad.valor}}</td>
+                <td id="preciocom"></td>
+                <td id="sueldo"></td>
                 
                 <!-- {% comment %} {% if user.is_superuser %}
                 <td><a class="btn btn-primary" href="{% url 'editar_bicicleta' bicicleta.id %}">Editar</a></td>
@@ -59,15 +61,88 @@
                 
             </tr>
             {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>Total<b></td>
+                <td id="totalvalor"></td>
+                <td id='totalcom'></td>
+            </tr>
         </tbody>
 </table>
 
 <!-- {% comment %} {% else %}
     <h1>No hay registros de bicicletas</h1>
 {% endif %}  {% endcomment %} -->
+</div>
+</div>
+{% endblock %}
 
-</div>
-</div>
+{% block javascript %}
+
+{% comment %} calculo total pago consultas{% endcomment %}
+<script>
+    $(document).ready(function()
+    {
+        var valoresp;
+        var totalvalor=0;
+        $('td:nth-child(4)').each(function()
+        {
+            valoresp=$(this).html();
+            totalvalor+=parseInt(valoresp);
+            $('#totalvalor').text(totalvalor);
+        });
+    });
+{% comment %} Comision total {% endcomment %}
+    $(document).ready(function()
+    {
+        var valorcom;
+        var totacom=0;
+        $('td:nth-child(4)').each(function()
+        {
+            valorcom=$(this).html();
+            totalcom=parseInt(valorcom*0.4);
+            $('#totalcom').text(totalcom);
+        });
+    });
+
+{% comment %} Comision x consulta {% endcomment %}
+    $(document).ready(function()
+    {
+	    $('tr').each(function()
+	{
+	var sumcom =0;
+	$(this).find('.precio').each(function()
+	{
+	    var porc=$(this).text();
+	    if(porc.length!==0)
+	{
+	    sumcom=parseInt(porc*0.4);
+	}
+   });
+	    $(this).find('#preciocom').html(sumcom);
+  });
+}); 
+
+{% comment %} total pago {% endcomment %}
+    $(document).ready(function()
+    {
+	    $('tr').each(function()
+	{
+	var sumsueldo =0;
+	$(this).find('.precio').each(function()
+	{
+	    var porcpago=$(this).text();
+	    if(porcpago.length!==0)
+	{
+	    sumsueldo=parseInt(porcpago*0.6);
+	}
+   });
+	    $(this).find('#sueldo').html(sumsueldo);
+  });
+}); 
+</script>
+
 {% endblock %}
 
 

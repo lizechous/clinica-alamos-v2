@@ -15,10 +15,10 @@ urlpatterns = [
     path('horaMedica/lista_citas', views.Lista_citas.as_view(), name='lista_citas'),
     
     # Modificar cita 
-    path('horaMedica/editar_cita/<int:pk>', views.Modificar_cita.as_view(), name='editar_cita'),
+    path('horaMedica/editar_cita/<str:pk>', views.Modificar_cita.as_view(), name='editar_cita'),
 
     # Eliminar cita
-    path('horaMedica/eliminar_cita/<int:pk>', views.Eliminar_cita.as_view(), name='eliminar_cita'),
+    path('horaMedica/eliminar_cita/<str:pk>', views.Eliminar_cita.as_view(), name='eliminar_cita'),
 
     url('especialidad/get_especialidades/$', views.get_especialidades, name='get_especialidades'),
     
