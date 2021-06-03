@@ -12,7 +12,7 @@ urlpatterns = [
 
     # Listar las citas 
     # path('listarCitas', views.listar_citas, name="listar_citas"),
-    path('horaMedica/lista_citas', views.Lista_citas.as_view(), name='lista_citas'),
+    path('horaMedica/lista_citas', views.Lista_citas , name="lista_citas"), 
     
     # Modificar cita 
     path('horaMedica/editar_cita/<str:pk>', views.Modificar_cita.as_view(), name='editar_cita'),
@@ -25,6 +25,5 @@ urlpatterns = [
     # -----------PAGOS-------------------------
     # trae los pagos de todos los medicos 
     path('horaMedica/lista_pagos', views.Lista_medicos_pagos.as_view(), name='lista_medicos_pagos'),
-    
     
 ]

@@ -26,9 +26,23 @@ class Agregar_cita(CreateView):
 #     citas = CitaMedica.objects.all()
 #     return render(request, "Medico/listar_citas.html", {'citas': citas})
 
-class Lista_citas(ListView):
-    model = CitaMedica
-    template_name = 'HoraMedica/lista_citas.html'
+# class Lista_citas(ListView):
+#     model = CitaMedica
+#     template_name = 'HoraMedica/lista_citas.html'
+
+def Lista_citas(request):
+    lista= CitaMedica.objects.all()
+    nombre_medico= request.GET.get('nombre-medico')
+
+    if 'btn-buscarMedicos' in request.GET:
+       if nombre_medico: 
+        #    fk: tabla medico, atributo nombre_medico = a nombre_medico del get
+           lista= CitaMedica.objects.filter(medico__nombre_medico__icontains=nombre_medico)
+    data = {
+        'object_list': lista
+    }
+    return render(request, 'HoraMedica/lista_citas.html', data)
+    
     
 
 # MODIFICAR CITA 
