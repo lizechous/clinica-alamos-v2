@@ -1,45 +1,39 @@
 {% load static %} 
-
 <!DOCTYPE html>
-<html lang="en">
-    
-    
+<html>
+
+{% block css%}
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Aesthetic Template">
-    <meta name="keywords" content="Aesthetic, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <title>Clínica Dos Álamos</title>
 
-    {% block title %}<title>Clínica Dos Álamos </title>{% endblock title %}
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/slick/slick-theme.css' %}">
+  <!-- FancyBox -->
+  <link rel="stylesheet" href="{% static 'plugins/fancybox/jquery.fancybox.min.css' %}">
+  
+  <!-- Stylesheets -->
+  <link href="{% static 'css/style.css'  %}" rel="stylesheet">
 
-{% block css %} 
-    <!-- mobile responsive meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <!-- Slick Carousel -->
-    <link rel="stylesheet" href="{%static 'plugins/slick/slick.css' %}">
-    <link rel="stylesheet" href="{%static 'plugins/slick/slick-theme.css' %}">
-    <!-- FancyBox -->
-    <link rel="stylesheet" href="{%static 'plugins/fancybox/jquery.fancybox.min.css' %}">
-    
-    <!-- Stylesheets -->
-    <link href="{%static 'css/style.css' %}" rel="stylesheet">
-    
-    <!--Favicon-->
-    <link rel="shortcut icon" href="{%static 'images/favicon.ico' %}" type="image/x-icon">
-    <link rel="icon" href="{%static 'images/favicon.ico' %}" type="image/x-icon">
-{% endblock css %} 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
-{% block header %}
+{%endblock%}
+
 
 <!--header top-->
 <div class="header-top">
       <div class="container clearfix">
             <div class="top-left">
-                  <h6>Horario de atención : Lunes a Sábado - 8am a 10pm</h6>
+                  <h6>Horario de atención : Lunes a Sábado de 8 a 21 hrs</h6>
             </div>
             <div class="top-right">
                   <ul class="social-links">
@@ -63,11 +57,6 @@
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                               </a>
                         </li>
-                        <li>
-                              <a href="#">
-                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                              </a>
-                        </li>
                   </ul>
             </div>
       </div>
@@ -80,7 +69,7 @@
             <div class="logo">
                   <figure>
                         <a href="index.html">
-                              <img src="{% static 'images/logo.png' %}" alt="" width="130">
+                              {% comment %} <img src="{% static 'images/logo.png' %}" alt="" width="130"> {% endcomment %}
                         </a>
                   </figure>
             </div>
@@ -93,87 +82,102 @@
                               <strong>Email</strong>
                               <br>
                               <a href="#">
-                                    <span>cm_dosalamos@gmail.com</span>
+                                    <span>centrodosalamos.com</span>
                               </a>
                         </li>
                         <li class="item">
                               <div class="icon-box">
                                     <i class="fa fa-phone"></i>
                               </div>
-                              <strong>Llamanos</strong>
+                              <strong>Llámanos</strong>
                               <br>
-                              <span>(88017) +833 678 122</span>
+                              <span>+ (222) - 123 - 4567</span>
                         </li>
                   </ul>
-                  <div class="link-btn">
-                        <a href="#" class="btn-style-one">Agendar hora</a>
-                  </div>
             </div>
       </div>
 </section>
-<!--Header Upper-->
+
+<!-- AQUI ESTÁ EL NAV CON LOS BOTONES PARA ACCEDER A CUALQUIERA DE LOS TEMPLATES FUNCIONALES -->
+<!-- {% comment %} <header id= "cabecera">
+
+          <nav id="navbar" style="background-color: rgb(18, 40, 88);">   
+
+              <div id="menu" >
+                  <nav >
+                      <ul>
+                          <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
+                          <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                          <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
+                         {% comment %} 
+                             <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                              <li class="nav-item"><a href="{% url 'lista_bicicleta' %}">Listar bicicletas</a></li>
+                              <li class="nav-item"><a href="{% url 'mantenedor' %}">Buscar</a></li>
+                    
+                              {% if not user.is_authenticated %} 
+                              <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Registrarse</a></li>
+                              <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                              {% endif %}
+                              
+                              {% if user.is_authenticated %} 
+                              
+                              {% if user.is_superuser %}   -->
+                              <!-- <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li> -->
+                              <!-- <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Agregar usuario</a></li>
+                              <li class="nav-item"><a href="{% url 'listar_usuario' %}">Listar usuarios</a></li>
+                              <li class="nav-item"><a href="{% url 'funcionario_form' %}">Agregar funcionario</a></li>
+                              <li class="nav-item"><a href="{% url 'lista_funcionario' %}">Listar funcionarios</a></li>
+                              {% endif %} 
+              
+                              <li class="nav-item"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                              <span class="ml-md-5" style="color: rgb(81, 174, 214);"><strong>Usuario: {{ user.get_username }}</strong></span>
+                              {% endif %}                
+                              
+                          <li class="nav-item"><a href="{% url 'quienes_somos' %}">Quienes somos</a></li>
+                          <li class="nav-item"><a href="{% url 'galeria' %}">Galeria</a></li> 
+                       
+                          
+                      </ul>
+                  </nav>
+
+              </div>
+
+          </nav>
+      
+      </header> {% endcomment %} -->
+
+      <nav class="navbar navbar-default">
+        <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                          <!-- REDIRECCIONA AL TEMPLLATE HOME -->
+                          <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                          <!-- REDIRECCIONA AL TEMPLATE AGREGAR CITA -->
+                          <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
+                          <!-- REDIRECCIONA AL TEMPLATE DEL LISTADO DE CITAS -->
+                          <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
+                          <!-- PAGOS -->
+                          <!-- buscar medicos  -->
+                          <li class="nav-item"><a href="{% url 'lista_medicos_pagos' %}">Listar Pagos</a></li>
+                          
+
+                    </ul>
+              </div>
+        </div>
+  </nav>
+  <!-- FINAL DEL NAV CON LOS TEMPLATES FUNCIONALES -->
 
 
 <!--Main Header-->
-<nav class="navbar navbar-default">
-      <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                        aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                  </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                        <li class="active">
-                              <a href="index.html">Inicio</a>
-                        </li>
-                        <li>
-                              <a href="about.html">Nosotros</a>
-                        </li>
-                        <li>
-                              <a href="service.html">Servicios</a>
-                        </li>
-                        <li>
-                              <a href="appointment.html">Agendar hora</a>
-                        </li>
-                        <li>
-                              <a href="contact.html">Contacto</a>
-                        </li>
-                  </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-</nav>
-<!--End Main Header -->
-
-<!--Page Title-->
-<section class="page-title text-center" style="background-image:url({% static 'images/background/3.jpg' %});">
-    <div class="container">
-        <div class="title-text">
-            <h1>Agendar hora</h1>
-            <ul class="title-menu clearfix">
-                <li>
-                    <a href="index.html">Inicio &nbsp;/</a>
-                </li>
-                <li>Agendar hora</li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!--End Page Title-->
-
-{% endblock %}
-
+{% block main%} {% endblock %}
+{% block titulo_principal %} {% endblock %}
 {% block content %} {% endblock %}
 
-{% block footer %} 
+
+<!--footer-main-->
 <footer class="footer-main">
   <div class="footer-top">
     <div class="container">
@@ -183,11 +187,11 @@
             <div class="footer-logo">
               <figure>
                 <a href="index.html">
-                  <img src="{% static 'images/logo-2.png' %}" alt="">
+                  {% comment %} <img src="{% static 'images/logo-2.png' %}" alt=""> {% endcomment %}
+                  <h6>Centro médico Dos Álamos</h6>
                 </a>
               </figure>
             </div>
-            <p>Centro médico dos Álamos</p>
             <ul class="location-link">
               <li class="item">
                 <i class="fa fa-map-marker"></i>
@@ -196,13 +200,18 @@
               <li class="item">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                 <a href="#">
-                  <p>cm.dosalamos</p>
+                  <p>centrodosalamos@gmail.com</p>
                 </a>
               </li>
               <li class="item">
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                <p>833 678 122</p>
+                <p>(88017) +123 4567</p>
               </li>
+            </ul>
+            <ul class="list-inline social-icons">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
         </div>
@@ -211,11 +220,7 @@
           <ul class="menu-link">
             <li>
               <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>Kinesiología</a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>Clínica Dental</a>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>CLínica Dental</a>
             </li>
             <li>
               <a href="#">
@@ -223,16 +228,55 @@
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>Psicología</a>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Ginecología</a>
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>Ginecologíac</a>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Obstetricia</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Pediatría</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Medicina General</a>
             </li>
           </ul>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="social-links">
+            <h6>Post recientes</h6>
+            <ul>
+              <li class="item">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object" src="{% static 'images/blog/post-thumb-small.jpg' %}" alt="post-thumb">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading"><a href="#">Conoce nuestras novedades</a></h4>
+                    <p>En la clínica dos alamos contamos con distintos especialistas...</p>
+                  </div>
+                </div>
+              </li>
+              <li class="item">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object" src="{% static 'images/blog/post-thumb-small.jpg' %}" alt="post-thumb">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">
+                      <a href="#">Recomendaciones Covid19</a>
+                    </h4>
+                    <p>Antes de visitarnos, sigue estas medidas para cuidarte...</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -241,35 +285,56 @@
   <div class="footer-bottom">
     <div class="container clearfix">
       <div class="copyright-text">
-        <p>&copy; Copyright 2021. All Rights Reserved by
+        <p>&copy; Copyright 2018. All Rights Reserved by
           <a href="index.html">Clínica Dos Álamos</a>
         </p>
       </div>
+      <ul class="footer-bottom-link">
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="about.html">Nosotros</a>
+        </li>
+        <li>
+          <a href="contact.html">Contacto</a>
+        </li>
+      </ul>
     </div>
   </div>
 </footer>
 <!--End footer-main-->
-{% endblock %}
 
-{% block js %} 
+</div>
+<!--End pagewrapper-->
+
+
+
+<!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target=".header-top">
   <span class="icon fa fa-angle-up"></span>
 </div>
 
 <script src="{% static 'plugins/jquery.js' %}"></script>
+<script src="{% static 'plugins/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap.min.js' %}"></script>
-<script src="{% static 'plugins/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-select.min.js'  %}"></script>
 <!-- Slick Slider -->
 <script src="{% static 'plugins/slick/slick.min.js' %}"></script>
 <!-- FancyBox -->
 <script src="{% static 'plugins/fancybox/jquery.fancybox.min.js' %}"></script>
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-<script src="{% static 'plugins/google-map/gmap.js' %}"></script>
 
 <script src="{% static 'plugins/validate.js' %}"></script>
 <script src="{% static 'plugins/wow.js' %}"></script>
 <script src="{% static 'plugins/jquery-ui.js' %}"></script>
-<script src="{% static 'plugins/timePicker.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery.timepicker.css' %}" />
+  <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script>
+
+{% block javascript %}
 {% endblock %}
+
+</body>
+
+</html>
