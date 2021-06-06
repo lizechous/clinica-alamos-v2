@@ -1,19 +1,17 @@
 from django.db import models
 
 # Create your models here.
-TIPO_ESPECIALIDAD = (
-    ('Cirugía', 'Cirugía'),
-    ('Cardiología', 'Cardiología'),
-    ('Odontología', 'Odontología'),
-    ('Pediatría', 'Pediatría'),
-    ('Ginecología', 'Ginecología'),
-    ('Oftomología', 'Oftomología'),
-)
+class Especialidad(models.Model):
+    nombre_especialidad = models.TextField()
+    valor = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre_especialidad
 
 class Medico(models.Model):
-    nombre_medico = models.TextField(max_length=30)
-    tipo_Especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
+    run_medico = models.TextField(primary_key=True)
+    nombre_medico = models.TextField()
+    especialidad = models.ForeignKey(Especialidad, null=True, blank=True, on_delete=models.CASCADE)
 
 
     def __str__(self):
@@ -28,18 +26,17 @@ TIPO_PREVISION = (
 
 
 class CitaMedica(models.Model):
-    run = models.IntegerField(primary_key=True)
+    run= models.TextField(primary_key=True)
     nombre_paciente = models.TextField()
     tipo_prevision = models.CharField(max_length=50, choices=TIPO_PREVISION)
-    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    especialidad = models.CharField(max_length=50, choices=TIPO_ESPECIALIDAD)
+    medico = models.ForeignKey(Medico, related_name='medico', null=True, blank=True, on_delete=models.CASCADE)
     fecha_cita =  models.DateField()
-    hora_cita = models.TimeField(blank=True)
-    email = models.EmailField(max_length=70,blank=True, null= True, unique= True)
-    precio = models.IntegerField()
+    hora_cita = models.TimeField(blank=True, null=True)
+    email = models.EmailField(max_length=70,blank=True, null= True)
+    especialidad = models.ForeignKey(Especialidad, related_name='especialidad', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre_paciente
 
-# , null=True -- hora
-# , null= True, unique= True -- email
+
+
