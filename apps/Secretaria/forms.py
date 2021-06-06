@@ -1,6 +1,5 @@
-
 from django import forms
-from apps.Secretaria.models import CitaMedica
+from .models import CitaMedica
 class CitaMedicaForm(forms.ModelForm): 
     class Meta:  
         model = CitaMedica
