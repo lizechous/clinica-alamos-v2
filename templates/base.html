@@ -20,6 +20,10 @@
   <!-- Stylesheets -->
   <link href="{% static 'css/style.css'  %}" rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
 {%endblock%}
@@ -95,52 +99,6 @@
 </section>
 
 <!-- AQUI ESTÁ EL NAV CON LOS BOTONES PARA ACCEDER A CUALQUIERA DE LOS TEMPLATES FUNCIONALES -->
-<!-- {% comment %} <header id= "cabecera">
-
-          <nav id="navbar" style="background-color: rgb(18, 40, 88);">   
-
-              <div id="menu" >
-                  <nav >
-                      <ul>
-                          <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li>
-                          <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
-                          <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
-                         {% comment %} 
-                             <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
-                              <li class="nav-item"><a href="{% url 'lista_bicicleta' %}">Listar bicicletas</a></li>
-                              <li class="nav-item"><a href="{% url 'mantenedor' %}">Buscar</a></li>
-                    
-                              {% if not user.is_authenticated %} 
-                              <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Registrarse</a></li>
-                              <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
-                              {% endif %}
-                              
-                              {% if user.is_authenticated %} 
-                              
-                              {% if user.is_superuser %}   -->
-                              <!-- <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li> -->
-                              <!-- <li class="nav-item"><a href="{% url 'registrar_usuario' %}">Agregar usuario</a></li>
-                              <li class="nav-item"><a href="{% url 'listar_usuario' %}">Listar usuarios</a></li>
-                              <li class="nav-item"><a href="{% url 'funcionario_form' %}">Agregar funcionario</a></li>
-                              <li class="nav-item"><a href="{% url 'lista_funcionario' %}">Listar funcionarios</a></li>
-                              {% endif %} 
-              
-                              <li class="nav-item"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
-                              <span class="ml-md-5" style="color: rgb(81, 174, 214);"><strong>Usuario: {{ user.get_username }}</strong></span>
-                              {% endif %}                
-                              
-                          <li class="nav-item"><a href="{% url 'quienes_somos' %}">Quienes somos</a></li>
-                          <li class="nav-item"><a href="{% url 'galeria' %}">Galeria</a></li> 
-                       
-                          
-                      </ul>
-                  </nav>
-
-              </div>
-
-          </nav>
-      
-      </header> {% endcomment %} -->
 
       <nav class="navbar navbar-default">
         <div class="container">
@@ -169,7 +127,7 @@
 
 <!--Main Header-->
 {% block main%} {% endblock %}
-
+{% block titulo_principal %} {% endblock %}
 {% block content %} {% endblock %}
 
 
@@ -312,6 +270,7 @@
 </div>
 
 <script src="{% static 'plugins/jquery.js' %}"></script>
+<script src="{% static 'plugins/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-select.min.js'  %}"></script>
 <!-- Slick Slider -->
@@ -322,38 +281,14 @@
 <script src="{% static 'plugins/validate.js' %}"></script>
 <script src="{% static 'plugins/wow.js' %}"></script>
 <script src="{% static 'plugins/jquery-ui.js' %}"></script>
-<script src="{% static 'plugins/timePicker.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery.timepicker.css' %}" />
+  <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script>
+
 {% block javascript %}
-  <script>
-    $("#id_especialidad").change(function () {
-      var id_especialidad = $(this).val();
-
-      $.ajax({
-        url: '/especialidad/get_especialidades',
-        data: {
-          'id_especialidad': id_especialidad
-        },
-        dataType: 'json',
-        success: function (data) {
-            var select = document.getElementById('id_nombre_medico');
-            select.options = [];
-            var dataMedicos = jQuery.parseJSON(data)
-            /* Remove all options from the select list */
-            $('id_nombre_medico').empty();
-            /* Insert the new ones from the array above */
-            dataMedicos.forEach(function(value) {
-              var opt = document.createElement('option');
-              opt.innerHTML = value.fields.nombre_medico;
-              opt.value = value.fields.nombre_medico;
-              select.appendChild(opt);
-            });
-        }
-      });
-
-    });
-  </script>
 {% endblock %}
+
 </body>
 
 </html>
