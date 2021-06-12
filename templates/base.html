@@ -23,7 +23,12 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+  <!-- script de la libreria para generar el pdf  -->
+  <!-- {% comment %} <script src="html2pdf.bundle.min.js"></script> {% endcomment %} -->
+  <!--script que se encarga de crear el PDF usando la librería-->
+  <!-- {% comment %} <script src="genera_pdf.js"></script> {% endcomment %} -->
+  <script src="{% static 'dist/html2pdf.bundle.min.js' %}"></script>
+  <script src="{% static 'js/genera_pdf.js' %}"></script>
 </head>
 
 {%endblock%}
@@ -285,6 +290,9 @@
 	<script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery.timepicker.css' %}" />
   <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script>
+  
+   <!-- {% comment %} <script src="{% static 'js/genera_pdf.js' %}"></script>  {% endcomment %} -->
+   <!-- {% comment %} <script src="genera_pdf.js"></script>  {% endcomment %} -->
 
 {% block javascript %}
 {% endblock %}
