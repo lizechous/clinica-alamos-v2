@@ -18,7 +18,7 @@ class CitaMedicaForm(forms.ModelForm):
             'email' : 'Email',
         }
         widgets = {
-            'run': forms.TextInput(attrs={'class': 'form-control'}), 
+            'run': forms.TextInput(attrs={'class': 'form-control', 'maxlength' : '12', 'onkeydown' : 'return soloTeclasRut(this)'}), 
             'nombre_paciente': forms.TextInput(attrs={'class': 'form-control'}),
             'tipo_prevision': forms.Select(attrs={'class':'form-control'}),
             'especialidad': forms.Select(attrs={'class':'form-control'}),

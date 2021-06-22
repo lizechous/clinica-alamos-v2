@@ -11,7 +11,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+ 
   <!-- Slick Carousel -->
+
+
   <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}">
   <link rel="stylesheet" href="{% static 'plugins/slick/slick-theme.css' %}">
   <!-- FancyBox -->
@@ -330,7 +333,8 @@
 <script src="{% static 'js/script.js' %}"></script>
 	<script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery.timepicker.css' %}" />
-  <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script>
+  {% comment %} <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script> {% endcomment %}
+	<script type="text/javascript" src=" {% static 'js/jquery.Rut.js' %}"></script>
 
 {% block javascript %}
 {% endblock %}

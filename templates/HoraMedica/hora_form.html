@@ -25,10 +25,16 @@
 {% block javascript %}
   <script>
 
-    $(function() {
+    {% comment %} $(function() {
         $("#id_run").rut().on('rutValido', function(e, rut, dv) {
         }, { minimumLength: 7,  maximumLength: 9} );
-    })
+    }) {% endcomment %}
+
+    $('#id_run').Rut({
+        on_error: function(){ $('#id_run')[0].setCustomValidity('rut invalido !'); },
+        on_success: function(){ $('#id_run')[0].setCustomValidity(''); },
+        format_on: 'keyup'
+    });
 
     $( function() {
         $('#id_hora_cita').timepicker({
