@@ -63,17 +63,23 @@
         },
         dataType: 'json',
         success: function (data) {
-            var select = document.getElementById('id_medico');
+            // obtengo el elemento select (lista desplegable de medicos)
+            var select = document.getElementById('medico');
+            // le quito la cualidad de deshabilitado
             select.removeAttribute("disabled");
+            // borro todos sus elementos para agregar los médicos de la especialidad consultada
             select.length = 0;
+            // convierto la respuesta de medicos a json
             var dataMedicos = jQuery.parseJSON(data)
-            /* Remove all options from the select list */
-            $('id_medico').empty();
-            /* Insert the new ones from the array above */
+            // recorro cada uno de los médicos obtenidos para agregarlos como opción en el select
             dataMedicos.forEach(function(value) {
+              // creo una opción de select
               var opt = document.createElement('option');
+              // agrego el nombre de la opción, en este caso el nombre del médico
               opt.innerHTML = value.fields.nombre_medico;
+              // agrego como valor de opción la pk del médico (importante para luego hacer el insert)
               opt.value = value.pk;
+              // agrego la opción creada al select de médicos
               select.appendChild(opt);
             });
         }

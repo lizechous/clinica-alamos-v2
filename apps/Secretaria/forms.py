@@ -21,7 +21,7 @@ class CitaMedicaForm(forms.ModelForm):
             'nombre_paciente': forms.TextInput(attrs={'class': 'form-control'}),
             'tipo_prevision': forms.Select(attrs={'class':'form-control'}),
             'especialidad': forms.Select(attrs={'class':'form-control'}),
-            'medico': forms.Select(attrs={'class':'form-control', 'disabled' : 'disabled'}),
+            'medico': forms.Select(attrs={'class':'form-control', 'disabled' : 'disabled', 'id': 'medico'}),
             'fecha_cita' : forms.TextInput(attrs={'class': 'form-control', 'readonly' : 'readonly'}),
             'hora_cita' : forms.TextInput(attrs={'class': 'timepicker'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}), 

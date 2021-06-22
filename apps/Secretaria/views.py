@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.db.models import Q 
 from django.db.models import Sum
+from .models import Especialidad, Medico
 from apps.Cuenta.decorators import unauthenticated_user, allowed_users, check_group
 # Create your views here.
 
