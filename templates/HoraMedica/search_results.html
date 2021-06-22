@@ -1,41 +1,20 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% load static %}
 
-{% block main%}
-
-<!--End Main Header -->
-
-<!--Page Title-->
-<section class="page-title text-center" style="background-image:url( {% static 'images/background/3.jpg' %});">
-    <div class="container">
-        <div class="title-text">
-            <h1>Listado de Pagos</h1>
-            <ul class="title-menu clearfix">
-                <li>
-                    <a href="index.html">Inicio &nbsp;/</a>
-                </li>
-                <li>Listado de Pagos</li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!--End Page Title-->
-{% endblock %}
-
-
 {% block content %} 
-    <div class="container mt-3 pb-3">
+
+<div class="container mt-3 pb-3">
     <div class="col-md-12">
     <br>
     <br>
     <h2>Detalle de pagos</h2>
-    <br>
     
-
+    
+    
    <!-- {% comment %} {% if object_list %} {% endcomment %} -->
     <hr>
-    
+
     <br>
     <h3>Buscar por run del medico:</h3>
     <br>
@@ -46,7 +25,7 @@
 
    
     <div id="tabla_pagos" >
-    <h2>Todos los pagos</h2>
+    <h3>Pagos por medico</h3>
     <div><br> </div>
     <table class="table table-hover" >
 
@@ -196,5 +175,3 @@ if (index < largoColumna-1) -->calcula hasta el penultimo valor para que no se s
 </script>
 
 {% endblock %}
-
-

@@ -48,7 +48,7 @@
             <tr>
                 <td>{{ citamedica.nombre_paciente}}</td>
                 <td>{{ citamedica.run}}</td>
-                <td>{{ citamedica.medico}}</td>
+                <td>{{ citamedica.medico.nombre_medico}}</td>
                 <td>{{ citamedica.fecha_cita }}</td>
                 <td>{{ citamedica.hora_cita }}</td>
                 <td>{{ citamedica.especialidad.nombre_especialidad }}</td>
@@ -59,10 +59,6 @@
                 <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>
                 <td><a class="btn btn-danger" href="{% url 'eliminar_cita' citamedica.run %}">Eliminar</a></td>
                 
-                <!-- {% comment %} {% if user.is_superuser %}
-                <td><a class="btn btn-primary" href="{% url 'editar_bicicleta' bicicleta.id %}">Editar</a></td>
-                <td><a class="btn btn-danger" href="{% url 'eliminar_bicicleta' bicicleta.id %}">Eliminar</a></td>
-                {% endif %}   {% endcomment %} -->
                 
             </tr>
             {% endfor %}
