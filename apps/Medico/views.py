@@ -32,3 +32,8 @@ def Lista_citas(request):
         'object_list': lista
     }
     return render(request, 'Medico/lista_citas.html', data)
+
+def get_especialidades(request):
+    id_especialidad = request.GET.get('id_especialidad', None)
+    medicos = Medico.objects.filter(especialidad_id=id_especialidad)
+    return JsonResponse(serializers.serialize('json', list(medicos)), safe=False)

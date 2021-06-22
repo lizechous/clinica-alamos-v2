@@ -1,10 +1,6 @@
 from django.urls import path, include
-from django.conf.urls import url
-from . import views
 from apps.Secretaria.views import Lista_medicos_pagos
-from .views import views as secretaria_views
+from apps.Medico.views import get_especialidades
 
 urlpatterns = [
-    url('secretaria/especialidades/$', secretaria_views.get_especialidades, name='get_especialidades'),
 ]
-
