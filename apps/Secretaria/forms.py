@@ -1,6 +1,5 @@
-
 from django import forms
-from apps.Secretaria.models import CitaMedica
+from .models import CitaMedica
 class CitaMedicaForm(forms.ModelForm): 
     class Meta:  
         model = CitaMedica
@@ -18,7 +17,7 @@ class CitaMedicaForm(forms.ModelForm):
             'email' : 'Email',
         }
         widgets = {
-            'run': forms.TextInput(attrs={'class': 'form-control', 'maxlength' : '12', 'onkeydown' : 'return soloTeclasRut(this)'}), 
+            'run': forms.TextInput(attrs={'class': 'form-control'}), 
             'nombre_paciente': forms.TextInput(attrs={'class': 'form-control'}),
             'tipo_prevision': forms.Select(attrs={'class':'form-control'}),
             'especialidad': forms.Select(attrs={'class':'form-control'}),

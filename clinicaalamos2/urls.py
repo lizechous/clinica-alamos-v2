@@ -1,28 +1,32 @@
-"""clinicaalamos2 URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
+from apps.Cuenta import views as user_views
+from apps.Secretaria import views as secretaria_views
+from apps.Medico import views as medico_views
+from apps.Paciente import views as paciente_views
+from apps.Cuenta.decorators import unauthenticated_user, allowed_users
+from django.contrib.auth.decorators import login_required
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.Medico.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('register/', user_views.registerPage, name="register"),
+    path('login/', user_views.loginPage, name="login"),
+    path('logout/', user_views.logoutUser, name="logout"),
+    path('user/', user_views.logoutUser, name="user-page"),
+    path('secretaria/lista_medicos_pagos/', login_required(login_url='login')(secretaria_views.Lista_medicos_pagos.as_view()), name="lista_medicos_pagos"),
+    path('secretaria/agregar_cita', secretaria_views.Agregar_cita.as_view(), name="agregar_cita_secretaria"),
+    path('secretaria/editar_cita/<str:pk>', secretaria_views.Modificar_cita.as_view(), name='editar_cita'),
+    path('secretaria/eliminar_cita/<str:pk>', secretaria_views.Eliminar_cita.as_view(), name='eliminar_cita'),
+
+    path('medico/lista_citas', medico_views.Lista_citas, name="lista_citas"),
+    path('paciente/agregar_cita', paciente_views.Agregar_cita.as_view(), name="agregar_cita_paciente"), 
+
 ]
 

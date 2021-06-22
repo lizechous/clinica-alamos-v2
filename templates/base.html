@@ -1,4 +1,5 @@
 {% load static %} 
+{% load auth_extras %}
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +37,6 @@
 
 {%endblock%}
 
-
 <!--header top-->
 <div class="header-top">
       <div class="container clearfix">
@@ -70,7 +70,55 @@
       </div>
 </div>
 <!--header top-->
+<div>
+<nav class="navbar navbar-default">
+        <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                          
+                          <!-- REDIRECCIONA AL TEMPLLATE HOME -->
+                            <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
+                            
+                          <!-- OPCIONES DEL PACIENTE -->
+                          {% if request.user|has_group:"paciente" %} 
+                            <li class="nav-item"><a href="{% url 'agregar_cita_paciente' %}">Agregar cita</a></li>
+                          {% elif request.user|has_group:"medico" %}
+                            <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li>
+                          {% elif request.user|has_group:"secretaria" %} 
+                            <li class="nav-item"><a href="{% url 'agregar_cita_secretaria' %}">Agregar cita</a></li>
+                            <li class="nav-item"><a href="{% url 'lista_medicos_pagos' %}">Listar Pagos</a></li>
+                          {% elif request.user|has_group:"dueno" %}
+                            <li class="nav-item"><a href="{% url 'home' %}">Panel administración</a></li>
+                          {% else %}
+                            <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                            <li class="nav-item"><a href="{% url 'register' %}">Registrarse</a></li>
+                          {% endif %}
 
+
+                          <!-- Salir de sesión por tipo de usuario -->
+                          {% if request.user|has_group:"paciente" %} 
+                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
+                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+                          {% elif request.user|has_group:"medico" %}
+                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
+                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+                          {% elif request.user|has_group:"secretaria" %} 
+                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
+                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+                          {% elif request.user|has_group:"dueno" %}
+                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
+                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+                          {% endif %}
+                          
+
+                    </ul>
+              </div>
+        </div>
+  </nav>
+</div>
 <!--Header Upper-->
 <section class="header-uper">
       <div class="container clearfix">
@@ -130,6 +178,7 @@
               </div>
         </div>
   </nav>
+
   <!-- FINAL DEL NAV CON LOS TEMPLATES FUNCIONALES -->
 
 
@@ -183,7 +232,7 @@
           <ul class="menu-link">
             <li>
               <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>CLínica Dental</a>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>Clínica Dental</a>
             </li>
             <li>
               <a href="#">
