@@ -10,6 +10,7 @@ from django.core import serializers
 from django.db.models import Q 
 from django.db.models import Sum
 
+from datetime import date
 # Create your views here.
 
 # CREAR CITA
@@ -53,20 +54,50 @@ def get_especialidades(request):
     return JsonResponse(serializers.serialize('json', list(medicos)), safe=False)
 
 #----------------- PAGOS -------------------------------------------
-class Lista_medicos_pagos(ListView):
-    model = CitaMedica
-    template_name = 'HoraMedica/lista_medicos_pagos.html'
+# class Lista_medicos_pagos(ListView):
+    # model = CitaMedica
+    # template_name = 'HoraMedica/lista_medicos_pagos.html'
 
 
 # FILTRO: BUSCAR MEDICO POR RUN
 # TRAE LOS RESULTADOS DE LA BUSQUEDA
-class SearchResultsView(ListView):
-    model =CitaMedica
-    template_name = 'HoraMedica/search_results.html'
+# class SearchResultsView(ListView):
+#     model =CitaMedica
+#     template_name = 'HoraMedica/search_results.html'
     
-    def get_queryset(self): 
-        query = self.request.GET.get('q')
-        object_list = CitaMedica.objects.filter(
-            Q(medico__run_medico__icontains=query) )
+#     # def get_queryset(self): 
+#     #     query = self.request.GET.get('q')
+#     #     object_list = CitaMedica.objects.filter(
+#     #         Q(medico__run_medico__icontains=query) )
         
-        return object_list
+#     #     return object_list
+
+#     def get_queryset(self): 
+#         # fecha = CitaMedica.fecha_cita.strftime('%m')
+#         query = self.request.GET.get('q')
+#         # object_list = CitaMedica.objects.filter(
+#             # Q(fecha_cita__month=query) ).filter(Q(medico__run_medico__iconstains=query))
+#         object_list= CitaMedica.objects.exclude(Q(medico__run_medico__iconstains=query,fecha_cita = date.month))
+
+#         return object_list  
+
+def lista_medicos_pagos(request):
+    lista= CitaMedica.objects.all()
+    # info que irá por get desde la caja de texto. Ej: run-medico es la caja d texto donde se ingresara eñ rut para ser buscado
+    run_medico= request.GET.get('run-medico')
+    fecha_cita= request.GET.get('fecha-cita')
+
+    if 'btn-buscar' in request.GET:
+       if run_medico and fecha_cita: 
+           lista= CitaMedica.objects.filter(medico__run_medico__icontains=run_medico).filter(fecha_cita__month=fecha_cita)
+        #    lista= CitaMedica.objects.filter(fecha_cita__month=fecha_cita)
+    #    if fecha_cita:
+    #        lista= CitaMedica.objects.filter(fecha_cita__month=fecha_cita)
+    # elif 'btn-buscar_fecha_cita' in request.GET:
+    #     if fecha_cita:
+    #         lista= CitaMedica.objects.filter(fecha_cita__month=fecha_cita)
+      
+    data = {
+        'object_list': lista
+    }
+    return render(request, 'HoraMedica/lista_medicos_pagos.html', data)

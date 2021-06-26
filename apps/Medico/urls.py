@@ -1,7 +1,8 @@
 from django.urls import path, include
 from django.conf.urls import url
 from . import views
-from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita, Eliminar_cita, SearchResultsView
+from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita, Eliminar_cita, lista_medicos_pagos
+# SearchResultsView
 # from .views import views mantenedor
 
 urlpatterns = [
@@ -23,10 +24,13 @@ urlpatterns = [
 
     url('especialidad/get_especialidades/$', views.get_especialidades, name='get_especialidades'),
     
+    
     # -----------PAGOS-------------------------
     # trae los pagos de todos los medicos 
-    path('horaMedica/lista_pagos', views.Lista_medicos_pagos.as_view(), name='lista_medicos_pagos'),
+    # path('horaMedica/lista_pagos', views.Lista_medicos_pagos.as_view(), name='lista_medicos_pagos'),
     
     # FILTRO: BUSCAR MEDICO
-    path('search/', SearchResultsView.as_view(), name='search_results'),
+    # path('search/', SearchResultsView.as_view(), name='search_results'),
+    
+    path('horaMedica/lista_pagos/', views.lista_medicos_pagos , name="lista_medicos_pagos"), 
 ]

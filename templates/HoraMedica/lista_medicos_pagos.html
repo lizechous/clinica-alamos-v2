@@ -30,23 +30,33 @@
     <br>
     <br>
     <h2>Detalle de pagos</h2>
-    <br>
     
-
-   <!-- {% comment %} {% if object_list %} {% endcomment %} -->
+    
     <hr>
     
     <br>
-    <h3>Buscar por run del medico:</h3>
-    <br>
-    <form action="{% url 'search_results' %}" method="get">
-    <input name="q" type="text" placeholder="Search...">
-    </form>
-    <br>
+    <form class="form-inline mb-5" method="GET">
+        <div class="form-group mx-3">
+            
 
-   
+            <label class="mr-2">Run medico :</label>
+            <input type="text" class="form-control mr-2" name="run-medico">
+                        
+        </div>
+
+        <div class="form-group mx-3">
+            <label class="mr-2">Fecha cita :</label>
+           <input type="text" class="form-control mr-2" name="fecha-cita"> 
+            <button class="btn btn-secondary" type="submit" name="btn-buscar">Buscar</button>          
+        </div>     
+           
+
+    </form>
+<br><br>
+    
+
     <div id="tabla_pagos" >
-    <h2>Todos los pagos</h2>
+    <h2>Lista de pagos</h2>
     <div><br> </div>
     <table class="table table-hover" >
 
