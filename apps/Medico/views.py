@@ -21,8 +21,9 @@ from apps.Cuenta.decorators import unauthenticated_user, allowed_users, check_gr
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['medico'])
 def Lista_citas(request):
-    lista= CitaMedica.objects.all()
+    rutUsuario = request.user.usuario.rut
     nombre_medico= request.GET.get('nombre-medico')
+    lista= CitaMedica.objects.filter(medico__run_medico__contains=rutUsuario)
 
     if 'btn-buscarMedicos' in request.GET:
         if nombre_medico: 

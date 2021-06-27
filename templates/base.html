@@ -85,27 +85,9 @@
                           {% elif request.user|has_group:"dueno" %}
                             <li class="nav-item"><a href="{% url 'home' %}">Panel administración</a></li>
                           {% else %}
-                            <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
                             <li class="nav-item"><a href="{% url 'register' %}">Registrarse</a></li>
+                            <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesión</a></li>
                           {% endif %}
-
-
-                          <!-- Salir de sesión por tipo de usuario -->
-                          {% if request.user|has_group:"paciente" %} 
-                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
-                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-                          {% elif request.user|has_group:"medico" %}
-                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
-                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-                          {% elif request.user|has_group:"secretaria" %} 
-                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
-                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-                          {% elif request.user|has_group:"dueno" %}
-                            <span class="hello-msg">Bienvenido, {{request.user}}</span>
-                            <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-                          {% endif %}
-                          
-
                     </ul>
               </div>
         </div>
@@ -120,6 +102,38 @@
                               {% comment %} <img src="{% static 'images/logo.png' %}" alt="" width="130"> {% endcomment %}
                         </a>
                   </figure>
+            </div>
+            <div class="left-side">
+                  <ul class="contact-info">
+                        <li class="item">
+                              <!-- Salir de sesión por tipo de usuario -->
+                              {% if request.user|has_group:"paciente" %} 
+                                <div class="icon-box">
+                                    <i class="fa fa-user"></i>
+                               </div>
+                                <strong>Bienvenido, {{request.user.usuario.name}}</strong><br>
+                                <span ><a  class="hello-msg" href="{% url 'logout' %}">Salir</a></span>
+                              {% elif request.user|has_group:"medico" %}
+                              <div class="icon-box">
+                                    <i class="fa fa-user"></i>
+                               </div>
+                                <strong>Bienvenido, {{request.user.usuario.name}}</strong><br>
+                                <span ><a  class="hello-msg" href="{% url 'logout' %}">Salir</a></span>
+                              {% elif request.user|has_group:"secretaria" %} 
+                              <div class="icon-box">
+                                    <i class="fa fa-user"></i>
+                               </div>
+                                <strong>Bienvenido, {{request.user.usuario.name}}</strong><br>
+                                <span ><a  class="hello-msg" href="{% url 'logout' %}">Salir</a></span>
+                              {% elif request.user|has_group:"dueno" %}
+                              <div class="icon-box">
+                                    <i class="fa fa-user"></i>
+                               </div>
+                                <strong>Bienvenido, {{request.user.usuario.name}}</strong><br>
+                                <span ><a  class="hello-msg" href="{% url 'logout' %}">Salir</a></span>
+                              {% endif %}
+                        </li>
+                  </ul>
             </div>
             <div class="right-side">
                   <ul class="contact-info">

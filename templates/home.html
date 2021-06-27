@@ -5,15 +5,42 @@
 
 
 {% block content %} 
-<!-- <div class="container mt-3 pb-3"> -->
-    <!-- <div class="col-md-8"> -->
-    <h2>Pagina principal</h2>
-    <hr>
-     <!-- {% comment %} {% if user.is_authenticated %}   {% endcomment %} -->
+<div class="hero-slider">
+    <!-- Slider Item -->
+    <div class="slider-item" style="background-image:url( {% static 'images/slider/slider-bg-2.jpg' %});">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Slide Content Start-->
+                    <div class="content style text-right">
+                        <h2 class="text-white">Nos preocupamos por<br>Tu salud</h2>
+                        <p class="tag-text">Consulta nuestras especialidades</p>
+                        <a href="#" class="btn btn-main btn-white">Conócenos</a>
+                    </div>
+                    <!-- Slide Content End-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slider Item -->
+    <div class="slider-item" style="background-image:url( {% static 'images/slider/slider-bg-3.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Slide Content Start -->
+                    <div class="content text-center style">
+                        <h2 class="text-white text-bold mb-2">Los mejores servicios médicos</h2>
+                        <p class="tag-text mb-5">Agenda una hora con los mejores doctores
+                            <br>Tenemos horas disponibles</p>
+                        <a href="shop.html" class="btn btn-main btn-white">Registrate ahora</a>
+                    </div>
+                    <!-- Slide Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- {% comment %} <a href="{% url 'logout' %}">Logout</a> 
-    {% else %}
-        <a href="{% url 'login' %}">Login</a> 
-    {% endif %} {% endcomment %} -->
+<!--====  End of Page Slider  ====-->
 
 {% endblock content %}

@@ -23,7 +23,7 @@ def registerPage(request):
             
             group = Group.objects.get(name='paciente')
             user.groups.add(group)
-            Paciente.objects.create(
+            Usuario.objects.create(
                 user=user,
                 name=user.username
             )
