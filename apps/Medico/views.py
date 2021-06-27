@@ -101,3 +101,18 @@ def lista_medicos_pagos(request):
         'object_list': lista
     }
     return render(request, 'HoraMedica/lista_medicos_pagos.html', data)
+
+def lista_medicos_citas(request):
+    lista= CitaMedica.objects.all()
+    # info que irá por get desde la caja de texto. Ej: run-medico es la caja d texto donde se ingresara eñ rut para ser buscado
+    run_medico= request.GET.get('run-medico')
+    fecha_cita= request.GET.get('fecha-cita')
+
+    if 'btn-buscar' in request.GET:
+       if run_medico and fecha_cita: 
+           lista= CitaMedica.objects.filter(medico__run_medico__icontains=run_medico).filter(fecha_cita__month=fecha_cita)
+      
+    data = {
+        'object_list': lista
+    }
+    return render(request, 'HoraMedica/lista_citas.html', data)

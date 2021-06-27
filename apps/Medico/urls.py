@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.conf.urls import url
 from . import views
-from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita, Eliminar_cita, lista_medicos_pagos
+from apps.Medico.views import Agregar_cita, Lista_citas, Modificar_cita, Eliminar_cita, lista_medicos_pagos, lista_medicos_citas
 # SearchResultsView
 # from .views import views mantenedor
 
@@ -14,8 +14,11 @@ urlpatterns = [
 
     # Listar las citas 
     # path('listarCitas', views.listar_citas, name="listar_citas"),
-    path('horaMedica/lista_citas', views.Lista_citas.as_view() , name="lista_citas"), 
     
+    
+    # path('horaMedica/lista_citas', views.Lista_citas.as_view() , name="lista_citas"), 
+    
+    path('horaMedica/lista_citas', views.lista_medicos_citas , name="lista_citas"), 
     # Modificar cita 
     path('horaMedica/editar_cita/<str:pk>', views.Modificar_cita.as_view(), name='editar_cita'),
 
