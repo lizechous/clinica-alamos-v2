@@ -1,4 +1,5 @@
 # from apps.Medico.models import CitaMedica
+from apps.Medico.forms import CitaMedicaForm
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Especialidad, Medico
@@ -7,6 +8,7 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.core import serializers
 from django.db import connection
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from apps.Cuenta.decorators import unauthenticated_user, allowed_users, check_group
 
@@ -58,3 +60,17 @@ def lista_medicos_citas(request):
         'object_list': lista
     }
     return render(request, 'Medico/lista_citas.html', data)
+
+# # MODIFICAR CITA 
+# class Modificar_cita(UpdateView):
+#     model = CitaMedica
+#     form_class = CitaMedicaForm
+#     template_name = 'Secretaria/hora_form.html'
+#     # success_url = reverse_lazy('agregar_cita')   
+#     success_url = reverse_lazy('lista_medicos_pagos') 
+
+# # ELIMINAR CITA 
+# class Eliminar_cita(DeleteView):
+#     model = CitaMedica
+#     template_name = 'Secretaria/eliminar_cita.html'
+#     success_url = reverse_lazy('lista_citas')

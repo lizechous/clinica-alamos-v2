@@ -2,7 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Escuchamos el click del botón
     const $boton = document.querySelector("#btnCrearPdf");
     $boton.addEventListener("click", () => {
-        const $elementoParaConvertir = document.getElementById('tabla_pagos'); // <-- Aquí puedes elegir cualquier elemento del DOM
+        // Obtengo la tabla con los valores para el pdf
+        var divTablaPagos = document.getElementById('divTablaPagos');
+        // Clono el objeto, ya que necesito ocultar la columna de los botones 
+        // sin afectar a la tabla original
+        var divTablaPagosClonado = divTablaPagos.cloneNode(true); 
+        var tablaPagosClonado = divTablaPagosClonado.getElementsByTagName("table")[0];
+        // Getting the rows in table.
+        var row = tablaPagosClonado.rows;  
+
+        // Elimino las columnas editar y eliminar.  
+        for (var j = 1; j < row.length-1; j++) {
+            // Elimino las últimas dos celdas
+            row[j].deleteCell(row[j].cells.length-1);
+            row[j].deleteCell(row[j].cells.length-1);
+        }
         html2pdf()
             .set({
                 margin: 1,
@@ -21,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     orientation: 'portrait' // landscape o portrait
                 }
             })
-            .from($elementoParaConvertir)
+            .from(divTablaPagosClonado)
             .save()
             .catch(err => console.log(err));
     });

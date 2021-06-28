@@ -17,11 +17,11 @@ class CitaMedicaForm(forms.ModelForm):
             'email' : 'Email',
         }
         widgets = {
-            'run': forms.TextInput(attrs={'class': 'form-control'}), 
+            'run': forms.TextInput(attrs={'class': 'form-control', "onKeyPress": "return soloTeclasRut(event);", "maxlength": "12"}), 
             'nombre_paciente': forms.TextInput(attrs={'class': 'form-control'}),
             'tipo_prevision': forms.Select(attrs={'class':'form-control'}),
             'especialidad': forms.Select(attrs={'class':'form-control'}),
-            'medico': forms.Select(attrs={'class':'form-control', 'disabled' : 'disabled', 'id': 'medico'}),
+            'medico': forms.Select(attrs={'class':'form-control', 'disabled' : 'disabled'}),
             'fecha_cita' : forms.TextInput(attrs={'class': 'form-control', 'readonly' : 'readonly'}),
             'hora_cita' : forms.TextInput(attrs={'class': 'timepicker'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}), 

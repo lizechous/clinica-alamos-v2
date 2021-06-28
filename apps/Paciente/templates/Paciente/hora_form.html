@@ -24,8 +24,28 @@
 
 {% block javascript %}
   <script>    
+
+	function soloTeclasRut(tecla) {
+		return tecla.keyCode == 48 ||
+		tecla.keyCode == 49 ||
+		tecla.keyCode == 50 ||
+		tecla.keyCode == 51 ||
+		tecla.keyCode == 52 ||
+		tecla.keyCode == 53 ||
+		tecla.keyCode == 54 ||
+		tecla.keyCode == 55 ||
+		tecla.keyCode == 56 ||
+		tecla.keyCode == 57 ||
+        tecla.keyCode == 107 ||
+		tecla.keyCode == 75;   
+	}
+
     function noFestivos(date) {
         return jQuery.datepicker.noWeekends(date);
+    }
+
+    function removerDisabled() {
+        $('#id_medico').removeAttr("disabled");
     }
 
     $(function() {
@@ -64,7 +84,7 @@
         dataType: 'json',
         success: function (data) {
             // obtengo el elemento select (lista desplegable de medicos)
-            var select = document.getElementById('medico');
+            var select = document.getElementById('id_medico');
             // le quito la cualidad de deshabilitado
             select.removeAttribute("disabled");
             // borro todos sus elementos para agregar los médicos de la especialidad consultada
@@ -88,7 +108,7 @@
 
     $("#id_fecha_cita").change(function () {
       var in_fecha_cita = $(this).val();
-      var rut_medico = $("#medico").val();
+      var rut_medico = $("#id_medico").val();
 
       $.ajax({
         url: '/especialidad/get_horas_no_disponibles',
@@ -121,11 +141,11 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                <form method="POST">
+                                <form method="POST" name="hora_form" id="hora_form">
                                     {% csrf_token %} 
                                     {{ form.as_p }}
                                     <br>
-                                    <button type="submit" class="btn-style-one">Reservar hora</button>
+                                    <button type="submit" onclick="removerDisabled();" class="btn-style-one">Reservar hora</button>
                                 </form>
                                 </div>                       
                             </div>

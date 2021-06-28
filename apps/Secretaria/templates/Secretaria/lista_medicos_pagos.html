@@ -55,10 +55,10 @@
 <br><br>
     
 
-    <div id="tabla_pagos" >
+    <div id="divTablaPagos">
     <h2>Lista de pagos</h2>
     <div><br> </div>
-    <table class="table table-hover" >
+    <table id="tabla_pagos" class="table table-hover" >
 
         <thead>
             <tr>
@@ -85,7 +85,31 @@
                 <td id="preciocom"></td>
                 <td id="sueldo"></td>
                 
-                
+                <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>
+                <td><a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</a></td>
+
+                <!-- Button trigger modal -->
+                {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+                </button> {% endcomment %}
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Desea eliminar el registro?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="eliminarCita('{{citamedica.run}}')">Confirmar</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
                 
             </tr>
             {% endfor %}
@@ -126,7 +150,20 @@ $('#totalvalor').text(totalvalor); ---> con ('#totalvalor').text --> hace refere
 text(totalvalor)---> le indica que totalvalor se muestre ahí
 if (index < largoColumna-1) -->calcula hasta el penultimo valor para que no se sume el total
 {% endcomment %}
-    <script>
+<script>
+    function eliminarCita (run_cita) {
+      $.ajax({
+        url: '/especialidad/eliminar_cita',
+        data: {
+          'run_cita': run_cita
+        },
+        dataType: 'json',
+        success: function (data) {
+            location.reload();
+        }
+      });
+    }
+
     $(document).ready(function()
     {
         var valoresp;
