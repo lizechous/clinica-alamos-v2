@@ -3,7 +3,7 @@
 @import url("../plugins/bootstrap.min.css");
 @import url("../plugins/bootstrap-select.min.css");
 @import url("../plugins/jquery-ui/jquery-ui.css");
-@import url("../plugins/timePicker.css");
+/* @import url("../plugins/timePicker.css"); */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700|Source+Sans+Pro:400,600,700");
 body {
   line-height: 1.4;

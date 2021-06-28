@@ -23,7 +23,10 @@
 {% endblock %}
 
 {% block javascript %}
-  <script>
+  <script>    
+    function noFestivos(date) {
+        return jQuery.datepicker.noWeekends(date);
+    }
 
     $(function() {
         $("#id_run").rut().on('rutValido', function(e, rut, dv) {
@@ -36,13 +39,16 @@
             'step': '45',
             'minTime': '8:00',
             'maxTime': '18:00',
+            'disableTextInput': true
         } );
     } );
     
     $( function() {
         $( "#id_fecha_cita" ).datepicker(
             {
-                'dateFormat': 'dd/mm/yy'
+                'dateFormat': 'yy-mm-dd',
+                'minDate': 0,
+                'beforeShowDay': noFestivos
             }
         );
     } );
@@ -76,6 +82,22 @@
               // agrego la opción creada al select de médicos
               select.appendChild(opt);
             });
+        }
+      });
+    });
+
+    $("#id_fecha_cita").change(function () {
+      var in_fecha_cita = $(this).val();
+
+      $.ajax({
+        url: '/especialidad/get_horas_no_disponibles',
+        data: {
+          'fecha_cita': in_fecha_cita
+        },
+        dataType: 'json',
+        success: function (data) {
+            var horasNoDisponibles = jQuery.parseJSON(data);
+            $('#id_hora_cita').timepicker('option', 'disableTimeRanges', horasNoDisponibles);
         }
       });
     });

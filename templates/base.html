@@ -20,11 +20,19 @@
   
   <!-- Stylesheets -->
   <link href="{% static 'css/style.css'  %}" rel="stylesheet">
+  {% comment %} <link href="{% static 'plugins/jquery.timepicker.css'  %}" rel="stylesheet"> {% endcomment %}
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.js"></script>
+  <link href="{% static 'plugins/jquery.timepicker.css'  %}" rel="stylesheet">
 
+  <!-- script de la libreria para generar el pdf  -->
+  <!-- {% comment %} <script src="html2pdf.bundle.min.js"></script> {% endcomment %} -->
+  <!--script que se encarga de crear el PDF usando la librería-->
+  <!-- {% comment %} <script src="genera_pdf.js"></script> {% endcomment %} -->
+  <script src="{% static 'dist/html2pdf.bundle.min.js' %}"></script>
+  <script src="{% static 'js/genera_pdf.js' %}"></script>
 </head>
 
 {%endblock%}
@@ -161,11 +169,36 @@
 </section>
 
 
+<!-- AQUI ESTÁ EL NAV CON LOS BOTONES PARA ACCEDER A CUALQUIERA DE LOS TEMPLATES FUNCIONALES -->
+
+      {% comment %} <nav class="navbar navbar-default">
+        <div class="container"> {% endcomment %}
+              <!-- Brand and toggle get grouped for better mobile display -->
+              
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              {% comment %} <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav"> {% endcomment %}
+                          
+                                <!-- REDIRECCIONA AL TEMPLATE HOME -->
+                                {% comment %} <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li> {% endcomment %}
+                                <!-- REDIRECCIONA AL TEMPLATE AGREGAR CITA -->
+                                {% comment %} <li class="nav-item"><a href="{% url 'agregar_cita' %}">Agregar cita</a></li> {% endcomment %}
+                                <!-- REDIRECCIONA AL TEMPLATE DEL LISTADO DE CITAS -->
+                                {% comment %} <li class="nav-item"><a href="{% url 'lista_citas' %}">Lista Citas</a></li> {% endcomment %}
+                                <!-- PAGOS -->
+                                <!-- REDIRECCIONA AL TEMPLATE LISTAR PAGOS -->
+                                <!-- {% comment %} <li class="nav-item"><a href="{% url 'lista_medicos_pagos' %}">Listar Pagos</a></li> {% endcomment %} -->
+                                {% comment %} <li class="nav-item"><a href="{% url 'lista_medicos_pagos' %}">Listar Pagos</a></li>
+                    </ul>
+              </div>
+        </div>
+  </nav> {% endcomment %}
   <!-- FINAL DEL NAV CON LOS TEMPLATES FUNCIONALES -->
 
 
 <!--Main Header-->
 {% block main%} {% endblock %}
+{% block title_buscar %}{% endblock title_buscar %}
 {% block titulo_principal %} {% endblock %}
 {% block content %} {% endblock %}
 
@@ -308,8 +341,8 @@
   <span class="icon fa fa-angle-up"></span>
 </div>
 
-<script src="{% static 'plugins/jquery.js' %}"></script>
-<script src="{% static 'plugins/jquery-3.6.0.min.js' %}"></script>
+{% comment %} <script src="{% static 'plugins/jquery.js' %}"></script>
+<script src="{% static 'plugins/jquery-3.6.0.min.js' %}"></script> {% endcomment %}
 <script src="{% static 'plugins/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-select.min.js'  %}"></script>
 <!-- Slick Slider -->
@@ -319,11 +352,13 @@
 
 <script src="{% static 'plugins/validate.js' %}"></script>
 <script src="{% static 'plugins/wow.js' %}"></script>
-<script src="{% static 'plugins/jquery-ui.js' %}"></script>
+{% comment %} <script src="{% static 'plugins/jquery-ui.js' %}"></script> {% endcomment %}
 <script src="{% static 'js/script.js' %}"></script>
-	<script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery.timepicker.css' %}" />
+	{% comment %} <script type="text/javascript" src=" {% static 'plugins/jquery.timepicker.js' %}"></script> {% endcomment %}
   <script type="text/javascript" src=" {% static 'plugins/jquery.rut.js' %}"></script>
+  
+   <!-- {% comment %} <script src="{% static 'js/genera_pdf.js' %}"></script>  {% endcomment %} -->
+   <!-- {% comment %} <script src="genera_pdf.js"></script>  {% endcomment %} -->
 
 {% block javascript %}
 {% endblock %}

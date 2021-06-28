@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+
+{% block titulo_principal %}
+
+
+{% endblock %} 
+
+
+
+{% block content %} 
+
+
+    <form class="form-inline mb-5" method="GET">
+        <div class="form-group mx-3">
+            
+
+            <label class="mr-2">Run medico :</label>
+            <input type="text" class="form-control mr-2" name="run-medico">
+                        
+        </div>
+
+        <div class="form-group mx-3">
+            <label class="mr-2">Fecha cita :</label>
+            <input type="text" class="form-control mr-2" name="fecha-cita">  
+            <button class="btn btn-secondary" type="submit" name="btn-buscar">Buscar</button>          
+        </div>     
+           
+
+    </form>
+
+    
+
+
+
+{% if object_list %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Run medico</th>
+            <th>Nombre</th>
+            <th>Fecha cita</th>
+            <th>Especialidad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for citamedica in object_list %}
+        <tr>
+            <th scope="row">{{ citamedica.medico.run_medico }} </th>
+        
+                <td>{{ citamedica.medico.nombre_medico}}</td>
+                <td>{{ citamedica.fecha_cita}}</td>
+                <td>{{ citamedica.especialidad}}</td>
+
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %} {% endblock %}
