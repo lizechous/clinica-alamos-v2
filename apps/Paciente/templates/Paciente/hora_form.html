@@ -88,11 +88,13 @@
 
     $("#id_fecha_cita").change(function () {
       var in_fecha_cita = $(this).val();
+      var rut_medico = $("#medico").val();
 
       $.ajax({
         url: '/especialidad/get_horas_no_disponibles',
         data: {
-          'fecha_cita': in_fecha_cita
+          'fecha_cita': in_fecha_cita,
+          'rut_medico': rut_medico
         },
         dataType: 'json',
         success: function (data) {
