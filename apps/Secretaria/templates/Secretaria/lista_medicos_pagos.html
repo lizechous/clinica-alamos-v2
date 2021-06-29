@@ -46,7 +46,7 @@
 
         <div class="form-group mx-3">
             <label class="mr-2">Mes cita :</label>
-           <input type="text" class="form-control mr-2" name="fecha-cita"> 
+           <input type="number" class="form-control mr-2" name="fecha-cita"> 
             <button class="btn btn-secondary" type="submit" name="btn-buscar">Buscar</button>          
         </div>     
            
@@ -85,8 +85,8 @@
                 <td id="preciocom"></td>
                 <td id="sueldo"></td>
                 
-                <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>
-                <td><a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</a></td>
+                {% comment %} <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>
+                <td><a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</a></td> {% endcomment %}
 
                 <!-- Button trigger modal -->
                 {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
