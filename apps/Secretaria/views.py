@@ -13,6 +13,10 @@ import json
 from apps.Cuenta.decorators import unauthenticated_user, allowed_users, check_group
 # Create your views here.
 
+class Lista_citas_secretaria(ListView):
+    model = CitaMedica
+    template_name = 'Secretaria/lista_citas.html'
+
 
 class Lista_medicos_pagos(ListView):
     model = CitaMedica
@@ -32,7 +36,7 @@ class Modificar_cita(UpdateView):
     form_class = CitaMedicaForm
     template_name = 'Secretaria/hora_form.html'
     # success_url = reverse_lazy('agregar_cita')   
-    success_url = reverse_lazy('lista_medicos_pagos') 
+    success_url = reverse_lazy('lista_citas_secretaria') 
 
 # ELIMINAR CITA 
 # class Eliminar_cita(DeleteView):

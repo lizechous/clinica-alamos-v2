@@ -29,6 +29,7 @@ urlpatterns = [
     path('secretaria/editar_cita/<str:pk>', secretaria_views.Modificar_cita.as_view(), name='editar_cita'),
     # path('secretaria/eliminar_cita/<str:pk>', medico_views.Eliminar_cita.as_view(), name='eliminar_cita'),
     path('medico/lista_citas', medico_views.Lista_citas, name="lista_citas"),
+    path('secretaria/lista_citas', secretaria_views.Lista_citas_secretaria.as_view(), name="lista_citas_secretaria"),
     path('paciente/agregar_cita', paciente_views.Agregar_cita.as_view(), name="agregar_cita_paciente"), 
     path('secretaria/lista_pagos/', login_required(login_url='login')(secretaria_views.lista_medicos_pagos) , name="lista_medicos_pagos"), 
 ]
