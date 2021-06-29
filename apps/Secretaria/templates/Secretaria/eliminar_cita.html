@@ -1,6 +1,8 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+    <br>
+    <br>
     <div class="text-center">
         <form method="post">
             {% csrf_token %}
@@ -11,4 +13,6 @@
             <button class="btn btn-primary" type="submit">Si</button>
         </form>
     </div>
+    <br>
+    <br>
 {% endblock %}

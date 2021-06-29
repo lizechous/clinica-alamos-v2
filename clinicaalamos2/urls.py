@@ -19,7 +19,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     url('especialidad/get_especialidades/$', secretaria_views.get_especialidades, name='get_especialidades'),
     url('especialidad/get_horas_no_disponibles/$', secretaria_views.get_horas_no_disponibles, name='get_horas_no_disponibles'),
-    url('especialidad/eliminar_cita/$', secretaria_views.eliminar_cita, name='eliminar_cita'),
+    # url('especialidad/eliminar_cita/$', secretaria_views.eliminar_cita, name='eliminar_cita'),
 
     path('register/', user_views.registerPage, name="register"),
     path('login/', user_views.loginPage, name="login"),
@@ -27,10 +27,12 @@ urlpatterns = [
     path('user/', user_views.logoutUser, name="user-page"),
     path('secretaria/agregar_cita', secretaria_views.Agregar_cita.as_view(), name="agregar_cita_secretaria"),
     path('secretaria/editar_cita/<str:pk>', secretaria_views.Modificar_cita.as_view(), name='editar_cita'),
-    # path('secretaria/eliminar_cita/<str:pk>', medico_views.Eliminar_cita.as_view(), name='eliminar_cita'),
+    path('secretaria/eliminar_cita/<str:pk>', secretaria_views.Eliminar_cita.as_view(), name='eliminar_cita'),
     path('medico/lista_citas', medico_views.Lista_citas, name="lista_citas"),
     path('secretaria/lista_citas', secretaria_views.Lista_citas_secretaria.as_view(), name="lista_citas_secretaria"),
     path('paciente/agregar_cita', paciente_views.Agregar_cita.as_view(), name="agregar_cita_paciente"), 
     path('secretaria/lista_pagos/', login_required(login_url='login')(secretaria_views.lista_medicos_pagos) , name="lista_medicos_pagos"), 
+    # 
+    # path('secretaria/eliminarCita/<str:pk>', secretaria_views.eliminar_cita, name="eliminar_cita"),
 ]
 

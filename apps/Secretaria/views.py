@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import CitaMedica
 from .forms import CitaMedicaForm
 from django.contrib.auth.decorators import login_required
@@ -39,15 +39,22 @@ class Modificar_cita(UpdateView):
     success_url = reverse_lazy('lista_citas_secretaria') 
 
 # ELIMINAR CITA 
-# class Eliminar_cita(DeleteView):
-#     model = CitaMedica
-#     template_name = 'Secretaria/eliminar_cita.html'
-#     success_url = reverse_lazy('lista_citas')
+class Eliminar_cita(DeleteView):
+    model = CitaMedica
+    template_name = 'Secretaria/eliminar_cita.html'
+    success_url = reverse_lazy('lista_citas_secretaria')
 
-def eliminar_cita(request):
-    run_cita = request.GET.get('run_cita', None)
-    CitaMedica.objects.filter(run=run_cita).delete()
-    return JsonResponse("{respuesta: ok}", safe=False)
+# def eliminar_cita(request):
+#     run_cita = request.GET.get('run_cita', None)
+#     CitaMedica.objects.filter(run=run_cita).delete()
+#     return JsonResponse("{respuesta: ok}", safe=False)
+
+# def eliminar_cita(request, run):
+#     instancia = CitaMedica.objects.get(id=run)
+#     instancia.delete()
+
+#     return redirect('lista_citas_secretaria')
+
 
 def get_especialidades(request):
     id_especialidad = request.GET.get('id_especialidad', None)

@@ -55,7 +55,8 @@
                 <td>{{ citamedica.especialidad.valor}}</td>
                 
                 <td><a class="btn btn-primary" href="{% url 'editar_cita' citamedica.run %}">Editar</a></td>
-                <td><a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</a></td>
+                <td><a class="btn btn-danger" href="{% url 'eliminar_cita' citamedica.run %}">Eliminar</a></td>
+                {% comment %} <td><a class="btn btn-danger" href="/secretaria/eliminarCita/{{citamedica.run }}" onClick="return confirm('¿Seguro que quieres eliminar la cita de {{citamedica.nombre_paciente}}?');">Eliminar</a></td> {% endcomment %}
 
                 <!-- Button trigger modal -->
                 {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -63,7 +64,7 @@
                 </button> {% endcomment %}
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {% comment %} <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -78,7 +79,7 @@
                     </div>
                 </div>
                 </div>
-                
+                 {% endcomment %}
             </tr>
             {% endfor %}
         </tbody>
