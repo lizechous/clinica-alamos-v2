@@ -120,7 +120,7 @@
                                 <div class="icon-box">
                                     <i class="fa fa-user"></i>
                                </div>
-                                <strong>Bienvenido, {{request.user}}</strong><br>
+                                <strong>Bienvenido, {{request.user.first_name}}</strong><br>
                                 <span ><a  class="hello-msg" href="{% url 'logout' %}">Salir</a></span>
                               {% elif request.user|has_group:"medico" %}
                               <div class="icon-box">

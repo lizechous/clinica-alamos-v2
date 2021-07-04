@@ -23,7 +23,13 @@
 {% endblock %}
 
 {% block javascript %}
-  <script>    
+  <script>   
+
+    $(document).ready(function()
+    {
+        $('#id_nombre_paciente').val("{{request.user.first_name}}");
+        $('#id_email').val("{{request.user.email}}");
+    });
 
 	function soloTeclasRut(tecla) {
 		return tecla.keyCode == 48 ||

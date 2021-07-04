@@ -21,6 +21,8 @@
                                     {% csrf_token %} 
                                     {{ form.username }}
 									<br>
+                                    {{ form.first_name }}
+									<br>
 									{{ form.email }}
 									<br>
 									{{ form.password1 }}
@@ -60,9 +62,10 @@
 		//Query All input fields
 		var form_fields = document.getElementsByTagName('input')
 		form_fields[1].placeholder='Usuario';
-		form_fields[2].placeholder='Email';
-		form_fields[3].placeholder='Contraseña';
-		form_fields[4].placeholder='Verifique contraseña';
+        form_fields[2].placeholder='Nombre completo';
+		form_fields[3].placeholder='Email';
+		form_fields[4].placeholder='Contraseña';
+		form_fields[5].placeholder='Verifique contraseña';
 
 
 		for (var field in form_fields){	
